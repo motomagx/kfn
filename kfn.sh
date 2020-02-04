@@ -1637,7 +1637,7 @@ _run()
 
 	_vm_checker
 	echo -e "\e[32;1m\n $_ALL_READY\e[m"
-#	read a
+	read a
 
 	#FILE=$( dialog --stdout --title "Please choose a file" --fselect "/home/motomagx/kfn/projects/" 15 70 )
 
