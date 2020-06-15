@@ -5,9 +5,9 @@
 
 TITLE="Kernel for Newbies"
 MAIN_TITLE="The multi-arch kernel compiler tool"
-VERSION=3.0-alpha1
+VERSION=3.0-alpha2
 FILE_FORMAT_VERSION=1
-DEFAULT_KERNEL="4.20.3"
+DEFAULT_KERNEL="5.7.2"
 BASE_URL="https://cdn.kernel.org/pub/linux/kernel"
 
 BANNED_CHARS=( ':' ';' '@' '.' '"' "'" '?' '!' '#' '$' '%' '[' ']' '{' '}' '&' '<' '>' '=' ',' '`' )
@@ -101,7 +101,7 @@ _load_language()
 		_EXIT_BY_ERROR="Saindo pelo erro"
 		_RECOMMENDED_RAM_SIZE="Recomendado: >= 4096 MB de RAM e pelo menos 1024 MB de Swap."
 		_SEARCHING_FOR_DEPENDENCIES="Procurando por dependências"
-		_CPU_BUGS="Bugs ou problemas no CPU a nível Hardware ou estrutural encontrados:"
+		_CPU_BUGS="Bugs ou falhas de segurança foram detectados no seu CPU:"
 		_SINGLE_CPU_MSG_P1="CPU: Seu processador possui apenas"
 		_SINGLE_CPU_MSG_P2="núcleos disponíveis.\n	   Compilar o Kernel neste sistema pode levar um tempo muito longo."
 		_SEE="Veja"
@@ -199,6 +199,8 @@ _load_language()
 		_I386_SUPPORT_WARN="**NOTE** Official support for the i386 architecture has been removed since Kernel 3.8, but you can choose the i686 architecture that still continues to be officially supported as the x86 architecture by the newer versions.\n\nYou may have problems trying to compile Kernel 3.8 code or newer versions for i386 architecture. If your processor was manufactured in 2000 (such as Pentium 4 or Athlon64) or later, you can choose the i686 architecture compatible with most new x86 processors.\n\nSee: https://bit.ly/2EMx6jY"
 		_IA64_SUPPORT_WARN="**NOTE** IA64 (Itanium) is not an architecture compatible with x86 or x86_64/AMD64 code.\n\nYou will not be able to run IA64 compiled code on an x86_64/AMD64 processor machine, or vice versa, in this case you will need an IA64 (Itanium) based processor."
 		_FREE_SPACE_ERROR="You only have free GB on disk in the root partition, and you need at least GB. Failure to do so will cause problems in the compilation, impossibility of installing the new kernel and may compromise the operation of the system due to lack of space. Make sure you have at least a free GB for the compilation to take place successfully."
+		_HYPER_V_MACHINE="O KFN não pode ser executado no Windows Subsystem for Linux. Saindo."
+		_SEE_YOU_SOON="Nos vemos em breve. Até mais."
 	fi
 
 	if [ "$SELECT_LANGUAGE" == "2" ]
@@ -211,7 +213,7 @@ _load_language()
 		_EXIT_BY_ERROR="Exit by error"
 		_RECOMMENDED_RAM_SIZE="recommended: >= 4096 MB RAM and at least 1024 MB Swap."
 		_SEARCHING_FOR_DEPENDENCIES="Searching for dependencies"
-		_CPU_BUGS="Hardware/silicon-level or microcode CPU issues/bugs found."
+		_CPU_BUGS="Bugs or security holes have been detected on your CPU."
 		_SINGLE_CPU_MSG_P1="CPU: Your system has only"
 		_SINGLE_CPU_MSG_P2="available CPU cores.\n	   Compiling the kernel on this system can take a very long time."
 		_SEE="See"
@@ -309,6 +311,8 @@ _load_language()
 		_I386_SUPPORT_WARN="**NOTE** Official support for the i386 architecture has been removed since Kernel 3.8, but you can choose the i686 architecture that still continues to be officially supported as the x86/32bits architecture by the newer versions.\n\nYou may have problems trying to compile Kernel 3.8 code or newer versions for i386 architecture. If your processor was manufactured in 2000 (such as Pentium 4 or Athlon64) or later, you can choose the i686 architecture compatible with most new x86 processors.\n\nSee: https://bit.ly/2EMx6jY"
 		_IA64_SUPPORT_WARN="**NOTE** IA64 (Itanium) is not an architecture compatible with x86 or x86_64/AMD64 code.\n\nYou will not be able to run IA64 compiled code on an x86_64/AMD64 processor machine, or vice versa, in this case you will need an IA64 (Itanium) based processor."
 		_FREE_SPACE_ERROR="You only have free GB on disk in the root partition, and you need at least GB. Failure to do so will cause problems in the compilation, impossibility of installing the new kernel and may compromise the operation of the system due to lack of space. Make sure you have at least a free GB for the compilation to take place successfully."
+		_HYPER_V_MACHINE="KFN cannot be run on Windows Subsystem for Linux. Existing."
+		_SEE_YOU_SOON="See you soon. Good bye."
 	fi
 }
 
@@ -321,7 +325,6 @@ _CUSTOM_PREFIX_ON="Enabled"
 _CUSTOM_PREFIX_OFF="Disabled"
 _GCC="GNU Compiler Collection"
 _LLVM="Low Level Virtual Machine"
-_HYPER_V_MACHINE="Hyper-V $_DEFAULT_VM_MACHINE"
 _VMWARE_MACHINE="VMware $_DEFAULT_VM_MACHINE"
 _QEMU_MACHINE="QEMU $_DEFAULT_VM_MACHINE"
 _VIRTUALBOX_MACHINE="VirtualBox $_DEFAULT_VM_MACHINE"
@@ -394,9 +397,9 @@ _start()
 	_dialog_scheme_files
 
 	print ok "Set KFN dir as: $HOME/kfn"
-	print ok "	Downloads: $DOWNLOAD_DIR"
-	print ok "	   Source: $SOURCE_DIR"
-	print ok "	   Builds: $BUILD_DIR"
+	print ok "     Downloads: $DOWNLOAD_DIR"
+	print ok "	       Source: $SOURCE_DIR"
+	print ok "	       Builds: $BUILD_DIR"
 }
 
 # Dialog utility color scheme White:
@@ -622,7 +625,8 @@ _vm_checker()
 
 	if [ $HV_CHECK != 0 ]
 	then
-		print info "$_HYPER_V_MACHINE"
+		print warn "$_HYPER_V_MACHINE"
+		#exit
 	fi
 
 	if [ $QEMU_CHECK != 0 ]
@@ -676,34 +680,14 @@ _cpu_bugs()
 {
 	if [ "`cat /proc/cpuinfo | grep bugs | wc -l`" != 0 ]
 	then
-		print warn "\e[33;1m$_CPU_BUGS\e[m\n		 $_SEE: 'cat /proc/cpuinfo | grep bugs' $_CPU_BUGS_DETAILS"
-	fi
+		CPU_BUGS=`cat /proc/cpuinfo | grep bugs -m 1`
+		CPU_BUGS=`echo $CPU_BUGS`
+		CPU_BUGS=${CPU_BUGS/"bugs : "/"Bugs: "}
 
-	if [ "`cat /proc/cpuinfo | grep meltdown | wc -l`" != 0 ]
-	then
-		print warn "\e[33;1m$_CPU_BUGS_MSG\e[m Meltdown."
+		print warn "\e[33;1m$_CPU_BUGS\e[m\n\n		 \e[31;1m$CPU_BUGS\e[m\n		 $_SEE: 'cat /proc/cpuinfo | grep bugs' $_CPU_BUGS_DETAILS\n"
 	fi
-
-	if [ "`cat /proc/cpuinfo | grep spectre_v1 | wc -l`" != 0 ]
-	then
-		print warn "\e[33;1m$_CPU_BUGS_MSG\e[m Spectre v1."
-	fi
-
-	if [ "`cat /proc/cpuinfo | grep spectre_v2 | wc -l`" != 0 ]
-	then
-		print warn "\e[33;1m$_CPU_BUGS_MSG\e[m Spectre v2."
-	fi
-
-	if [ "`cat /proc/cpuinfo | grep l1tf | wc -l`" != 0 ]
-	then
-		print warn "\e[33;1m$_CPU_BUGS_MSG\e[m Foreshadow."
-	fi
-
-	if [ "`cat /proc/cpuinfo | grep spec_store_bypass | wc -l`" != 0 ]
-	then
-		print warn "\e[33;1m$_CPU_BUGS_MSG\e[m Speculative Bypass."
-	fi
-}
+	
+	}
 
 _extract() # Usage: _extract file_url
 {
@@ -1494,6 +1478,13 @@ _check_compiler()
 	esac
 }
 
+_exit()
+{	
+	echo -e "\n"
+	print info "$_SEE_YOU_SOON\n"
+	exit
+}
+
 _main_setup()
 {
 	MODE=$1
@@ -1547,7 +1538,7 @@ _main_setup()
 		export CFLAGS="$CFLAGS"
 		export CXXFLAGS="$CFLAGS"
 
-		SELECT_SETUP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "$_PROJECT_TITLE $_PROJECT_VAR_NAME" 24 0 40 \
+		SELECT_SETUP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "$_PROJECT_TITLE $_PROJECT_VAR_NAME" 26 0 40 \
 		"$_PROJECT_NAME" "$_PROJECT_VAR_NAME" \
 		"$_PROJECT_KERNEL" "$_PROJECT_VAR_KVERSION" \
 		"$_PROJECT_ARCH" "$_PROJECT_VAR_ARCH$CROSS_COMPILATION_INFO" \
@@ -1564,7 +1555,9 @@ _main_setup()
 		"$_EXTRACT_KERNEL_FILES" "$_CREATE_LOCAL_FILES" \
 		"$_CLEAN_TEMPORARY_FILES" "$_CLEAN_TEMPORARY_FILES_TXT" \
 		"$_GENERATE_CONFIG_FILE" "$_GENERATE_CONFIG_FILE_TXT" \
-		"$_PROJECT_START_BUILD" "$_PROJECT_START_BUILD_TXT" `
+		"$_PROJECT_START_BUILD" "$_PROJECT_START_BUILD_TXT" \
+		"" "" \
+		"6. Sair" "Cancela as alterações e sai do KFN." `
 
 		case "$SELECT_SETUP" in
 
@@ -1607,6 +1600,9 @@ _main_setup()
 			"$_PROJECT_LOCATION_BUILD")
 				_location_build_info ;;
 
+			"6. Sair")
+				_exit ;;
+
 		esac
 	done
 }
@@ -1615,7 +1611,7 @@ _run()
 {
 	_start
 
-	_windows_subsystem_checker
+	#_windows_subsystem_checker
 
 	_scan_dependencies 0
 
@@ -1645,7 +1641,6 @@ _run()
 }
 
 _run
-
 
 
 
