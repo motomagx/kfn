@@ -2,6 +2,7 @@
 
 # Kernel for Newbies
 # The KFN Team
+# https://github.com/motomagx/kfn
 
 TITLE="Kernel for Newbies"
 MAIN_TITLE="The multi-arch kernel compiler tool"
