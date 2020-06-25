@@ -2,13 +2,12 @@
 
 # Kernel for Newbies
 # The KFN Team
-# https://github.com/motomagx/kfn
 
 TITLE="Kernel for Newbies"
 MAIN_TITLE="The multi-arch kernel compiler tool"
 VERSION=3.0-alpha2
 FILE_FORMAT_VERSION=1
-DEFAULT_KERNEL="5.7.2"
+DEFAULT_KERNEL="5.7.6"
 BASE_URL="https://cdn.kernel.org/pub/linux/kernel"
 
 BANNED_CHARS=( ':' ';' '@' '.' '"' "'" '?' '!' '#' '$' '%' '[' ']' '{' '}' '&' '<' '>' '=' ',' '`' )
@@ -345,7 +344,7 @@ export DIALOGRC="$HOME/kfn/dialog_color_scheme_black_and_green"
 title()
 {
 	clear
-	echo -e "\e[32;1m$TITLE $VERSION\n\e[m"
+	echo -e "\n\e[32;1m$TITLE $VERSION\n\e[m"
 }
 
 print()
@@ -776,7 +775,9 @@ _download()
 _check_dependencies()
 {
 	POSITION="$1"
-	echo -e "\n$_SEARCHING_FOR_DEPENDENCIES:\n"
+
+	echo
+	print info "$_SEARCHING_FOR_DEPENDENCIES:\n"
 
 	COUNTER_DEPENDENCIES=0
 	COUNTER_MISSING=0
@@ -1642,6 +1643,7 @@ _run()
 }
 
 _run
+
 
 
 
