@@ -755,7 +755,7 @@ _download()
 
 				echo "${MD5[0]}" > "$DOWNLOAD_DIR/$FILENAME.md5"
 
-				dialog --title "$DEFAULT_TITLE" --msgbox "\n$_DOWNLOAD_COMPLETE: $FILENAME - ${MD5[0]}" 7 75
+				dialog --title "$DEFAULT_TITLE" --msgbox "\n$_DOWNLOAD_COMPLETE: $FILENAME\nMD5: ${MD5[0]}" 8 75
 			fi
 		fi
 	else
@@ -1245,10 +1245,11 @@ _start_build()
 		print info "$_START_BUILD $_PROJECT_VAR_ARCH$CROSS_COMPILATION_INFO"
 		print info "$_COMPILER: $_PROJECT_VAR_COMPILER ($COMPILER_NAME)"
 		print info "$_KERNEL_VERSION: $_PROJECT_VAR_KVERSION"
-
+		print info "Using CPU CFLAGS: Yes"
 		echo
 
-		CPU_TASK="$(($CPU_THREADS+1))"
+		CPU_TASK="$(($CPU_THREADS+2))"
+
 		DEFAULT_CA="--initrd kernel_image kernel_headers"
 		DEFAULT_CA2="kernel_image kernel_headers"
 		ACTUAL_DIR="`pwd`"
@@ -1270,7 +1271,7 @@ _start_build()
 			export CXXFLAGS="$CFLAGS"
 
 			# This line makes the magic:
-			make deb-pkg -j $CPU_TASK $PROJECT_PREFIX #$DEFAULT_CA2
+			make deb-pkg -j $CPU_TASK $PROJECT_PREFIX CFLAGS="$CFLAGS"
 		else
 
 			# Compile for i686 processor:
@@ -1487,6 +1488,17 @@ _exit()
 	exit
 }
 
+_get_kernel_version()
+{
+
+	_SELECT_KERNEL_VERSION="Selecione a versao do Kernel a ser compilada.\nVoce pode verificar a versao mais recente em Kernel.org."
+
+	_PROJECT_VAR_KVERSION=$( dialog --stdout --title "$DEFAULT_TITLE" --inputbox "\n$_SELECT_KERNEL_VERSION\n " 13 60 "$_PROJECT_VAR_KVERSION" )
+
+	_gen_kernel_version
+}
+
+
 _main_setup()
 {
 	MODE=$1
@@ -1559,9 +1571,12 @@ _main_setup()
 		"$_GENERATE_CONFIG_FILE" "$_GENERATE_CONFIG_FILE_TXT" \
 		"$_PROJECT_START_BUILD" "$_PROJECT_START_BUILD_TXT" \
 		"" "" \
-		"6. Sair" "Cancela as alteracões e sai do KFN." `
+		"6. Sair" "Cancela as alteracoes e sai do KFN." `
 
 		case "$SELECT_SETUP" in
+
+			"$_PROJECT_KERNEL")
+				_get_kernel_version ;;
 
 			"$_DOWNLOAD_KERNEL_FILES")
 				_download_package ;;
@@ -1636,8 +1651,6 @@ _run()
 	_vm_checker
 	echo -e "\e[32;1m\n $_ALL_READY\e[m"
 	read a
-
-	#FILE=$( dialog --stdout --title "Please choose a file" --fselect "/home/motomagx/kfn/projects/" 15 70 )
 
 	_main_setup new
 }
