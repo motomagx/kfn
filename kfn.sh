@@ -59,7 +59,247 @@ DEPENDENCIES[2]="dpkg-cross gcc-aarch64-linux-gnu g++-aarch64-linux-gnu" 	   # A
 DEPENDENCIES[3]="dpkg-cross gcc-multilib-i686-linux-gnu' gcc-aarch64-linux-gnu g++-aarch64-linux-gnu" 	   # i686
 DEPENDENCIES[4]="dpkg-cross gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi" 	   # powerpc
 
-MIN_DISK_CAPACITY_FREE=20 # Min of 15GB free in / is needed.
+_COMPILER[0]="Compilador"
+_COMPILER[1]="Compiler"
+_COMPILER_TXT[0]="Compiladores disponívels para"
+_COMPILER_TXT[1]="Compilers available for"
+_LOCAL_CACHE[0]="Nao há cache do pacote do Kernel criado. Realizando download do pacote"
+_LOCAL_CACHE[1]="There is no cache of the Kernel package created. Downloading the package"
+_ALL_FILES_EXTRACTED[0]="Todos os arquivos foram extraídos com sucesso."
+_ALL_FILES_EXTRACTED[1]="All files have been extracted successfully."
+_UNKNOWN_ERROR[0]="Saindo devido ao erro desconhecido:"
+_UNKNOWN_ERROR[1]="Exit by unknown error:"
+_EXIT_BY_ERROR[0]="Saindo pelo erro"
+_EXIT_BY_ERROR[1]="Exit by error"
+_RECOMMENDED_RAM_SIZE[0]="Recomendado: >[]= 4096 MB de RAM e pelo menos 1024 MB de Swap."
+_RECOMMENDED_RAM_SIZE[1]="recommended: >[]= 4096 MB RAM and at least 1024 MB Swap."
+_SEARCHING_FOR_DEPENDENCIES[0]="Procurando por dependencias"
+_SEARCHING_FOR_DEPENDENCIES[1]="Searching for dependencies"
+_CPU_BUGS[0]="Bugs ou falhas de seguranca foram detectados no seu CPU:"
+_CPU_BUGS[1]="Bugs or security holes have been detected on your CPU."
+_SINGLE_CPU_MSG_P1[0]="CPU: Seu processador possui apenas"
+_SINGLE_CPU_MSG_P1[1]="CPU: Your system has only"
+_SINGLE_CPU_MSG_P2[0]="nucleos disponíveis.\n	   Compilar o Kernel neste sistema pode levar um tempo muito longo."
+_SINGLE_CPU_MSG_P2[1]="available CPU cores.\n	   Compiling the kernel on this system can take a very long time."
+_SEE[0]="Veja"
+_SEE[1]="See"
+_CANCELLED_BY_USER[0]="Cancelado pelo usuário."
+_CANCELLED_BY_USER[1]="Cancelled by user."
+_UNKNOWN[0]="Desconhecido."
+_UNKNOWN[1]="Unknown."
+_ALL_READY[0]="** Tudo pronto. Pressione ENTER para iniciar o $TITLE **"
+_ALL_READY[1]="** All ready. Press ENTER to start $TITLE **"
+_ALSO_AMD64[0]="tambem AMD64"
+_ALSO_AMD64[1]="also AMD64"
+_NEWER_X86[0]="novos processadores x86"
+_NEWER_X86[1]="newer x86 processors"
+_OLD_X86[0]="antigos processadores x86"
+_OLD_X86[1]="old x86 processors"
+_DEFAULT_CFLAGS_TEXT[0]="Select safe/preset CFLAGS optimization for"
+_DEFAULT_CFLAGS_TEXT[1]="Select safe/preset CFLAGS optimization for"
+_WINDOWS_SUBSYSTEM_INCOMPATIBLE_MSG[0]="nao e' compativel com Linux on Windows Subsystem, experimente utilizar num sistema sendo executado no VirtualBox, Vmware, QEMU/KVM ou dual-boot."
+_WINDOWS_SUBSYSTEM_INCOMPATIBLE_MSG[1]="is not compatible with Linux on Windows subsystem, try VirtualBox, Vmware, QEMU, Linux-KVM or dual-boot. Exiting."
+_ERROR_DOWNLOAD[0]="Ocorreu um erro enquanto o arquivo era baixado. Status:"
+_ERROR_DOWNLOAD[1]="Error while downloading file. Status:"
+_PRESS_ANY_KEY_TO_CONTINUE[0]="Pressione ENTER para continuar."
+_PRESS_ANY_KEY_TO_CONTINUE[1]="Press ENTER to continue."
+_TMP_RW_ALLOWED[0]="Leitura e escrita em /tmp e' aceito."
+_TMP_RW_ALLOWED[1]="Read/Write access in /tmp is allowed."
+_DEFAULT_VM_MACHINE[0]="e' detectado como maquina virtual hospedeira. Desempenho pode ser reduzido."
+_DEFAULT_VM_MACHINE[1]="is detected as virtual machine host. Performance may be reduced."
+_SKIP_VALID_DOWNLOAD[0]="Nao e' necessario download pois já existe um pacote do Kernel baixado e validado por MD5."
+_SKIP_VALID_DOWNLOAD[1]="It is not necessary to download since there is already a Kernel package downloaded and validated by MD5."
+_PRESS_ENTER_TO_CONTINUE[0]="$_PRESS_ANY_KEY_TO_CONTINUE"
+_PRESS_ENTER_TO_CONTINUE[1]="$_PRESS_ANY_KEY_TO_CONTINUE"
+_LACK_OF_PS2_SUPPORT[0]="Sistema Sony PlayStation 2 nao e' mais suportado desde o KFN v2.8. Saindo..."
+_LACK_OF_PS2_SUPPORT[1]="Sony PlayStation 2 systems ARE NOT SUPPORTED anymore since KFN v2.8. Please exit."
+_LACK_OF_PS3_SUPPORT[0]="Sistema PlayStation 3 systems nao e' totalmente compativel desde KFN v3.0."
+_LACK_OF_PS3_SUPPORT[1]="Sony PlayStation 3 systems no longer have full KFN oficial support since v3.0."
+_CPU_BUGS_MSG[0]="$_CPU_BUGS"
+_CPU_BUGS_MSG[1]="$_CPU_BUGS"
+_X86_64_CFLAGS[0]="CFLAGS x86_64 genericas"
+_X86_64_CFLAGS[1]="Generic x86_64 CFLAGS"
+_X86_64_TITLE[0]="$_DEFAULT_CFLAGS_TEXT Arquitetura Intel x86_64:"
+_X86_64_TITLE[1]="$_DEFAULT_CFLAGS_TEXT Intel x86_64 arch:"
+_SELECT_TARGET_ARCH[0]="Selecione a arquitetura alvo.\nSe voce deseja compilar para esta mesma máquina, selecione:"
+_SELECT_TARGET_ARCH[1]="Select the target architecture.\nIf you want to compile for this same computer, select:"
+_SAVED_PROJECT[0]="Projeto salvo como:"
+_SAVED_PROJECT[1]="Project saved as:"
+_SELECT_NUMBER_OF_THREADS[0]="Selecione o numero de nucleos a serem usados para compilar o codigo (1 to 1024).\n\nValor recomendado para este sistema:"
+_SELECT_NUMBER_OF_THREADS[1]="Set the number of threads to use when compiling the code (1 to 1024).\n\nRecommended value for this system:"
+_CLEAN_MAKE_FILES[0]="Removendo arquivos pre' compilados. Isso pode levar alguns minutos."
+_CLEAN_MAKE_FILES[1]="Removing precompiled files. This may take some time."
+_OVERRIDE_FILE[0]="Voce deseja sobrescrever o seguinte arquivo:"
+_OVERRIDE_FILE[1]="Do you want to overwrite the current file:"
+_KERNEL_SETUP_UTILITY[0]="Compilando arquivos do Utilitário de Configuracao do Kernel, por favor, aguarde."
+_KERNEL_SETUP_UTILITY[1]="Compiling files for Kernel Setup Utility, please wait."
+_TITLE_CANNOT_BE_EMPTY[0]="Nome do projeto nao pode estar vazio."
+_TITLE_CANNOT_BE_EMPTY[1]="Project name cannot be empty."
+_PREFIX_CANNOT_BE_EMPTY[0]="Prefixo nao pode ficar vazio."
+_PREFIX_CANNOT_BE_EMPTY[1]="Prefix cannot be empty."
+_CONFIG_NOT_FOUND[0]="Arquivo de configuracao do Kernel nao localizado.\nTenha certeza de que ele foi salvo com o seguinte nome: .config"
+_CONFIG_NOT_FOUND[1]="Kernel configuration file not found.\nMake sure it has been saved as .config name."
+_THREADS_CANNOT_BE_EMPTY[0]="Valor de tarefas nao pode ficar fazio."
+_THREADS_CANNOT_BE_EMPTY[1]="Threads value cannot be empty."
+_THREADS[0]="threads"
+_THREADS_CANNOT_BE_ZERO[0]="Valor de tarefas nao pode ser '0' ou negativo, precisa ser pelo menos '1', a menos que voce esteja na Matrix e Morpheus autorizou voce a utilizar esse valor."
+_THREADS_CANNOT_BE_ZERO[1]="Threads value cannot be '0' or negative, must be at least '1', unless you are in the Matrix and Morpheus authorize you to use this value."
+_START_BUILD[0]="Iniciando compilacao do Kernel para:"
+_START_BUILD[1]="Started kernel compilation for:"
+_SET_PROJECT_NAME[0]="Digite o nome do projeto:"
+_SET_PROJECT_NAME[1]="Type the project name:"
+_CROSS_COMPILATION_INFO[0]="(modo de compilacao-cruzada)"
+_CROSS_COMPILATION_INFO[1]="(cross-compile mode)"
+_SET_PROJECT_PREFIX[0]="Selecione o profixo a ser utilizado.\n\nNote que poderá ser utilizado somente letras (A-Z, a-z), numeros (0-9), traco, ponto e underline sao recomendados.\n\nEspaco e caracteres especiais nao sao permitidos."
+_SET_PROJECT_PREFIX[1]="Choose the name of the prefix to be used.\n\nNote that only letters (A-Z, a-z), numbers (0-9), stroke, point, and underline are recommended.\n\nSpace and special characters are not allowed."
+_PROJECT_LOCATION_BUILD[0]="Estrutura local do projeto"
+_PROJECT_LOCATION_BUILD[1]="Local project structure"
+_FOLDER_IS_NOT_EMPTY[0]="O seguinte diretorio nao está vazio:"
+_FOLDER_IS_NOT_EMPTY[1]="The following directory is not empty:"
+_CONTINUE_TO_EMPTY_DIR[0]="Para extrair e continuar, e' necessário apagar os arquivos. Voce deseja remover o conteudo deste diretorio?"
+_CONTINUE_TO_EMPTY_DIR[1]="To extract and continue, you must delete the files. Do you want to remove the contents of the directory?"
+_SRC_RO_MSG[0]="Acesso de leitura e escrita em /usr/src foi permitido."
+_SRC_RO_MSG[1]="Read/Write access in /usr/src is allowed."
+_TMP_RO_MSG[0]="Acesso de somente leitura em /tmp."
+_TMP_RO_MSG[1]="Read-only access in /tmp."
+_SRC_RW_MSG[0]="Acesso de somente leitura em /usr/src. Talvez será necessário acesso Root."
+_SRC_RW_MSG[1]="Read-only access in /usr/src."
+_EXTRACTING_PACKAGES[0]="Extraindo pacote, diretorio de saida:"
+_EXTRACTING_PACKAGES[1]="Extracting package, output directory:"
+_DISK_FREE_SPACE_P1[0]="Disco: Apenas"
+_DISK_FREE_SPACE_P1[1]="Disk: Only"
+_DISK_FREE_SPACE_P2[0]="GB estao livre na particao da pasta /home, onde pelo menos 20GB e' necessario. Proceda com cuidado."
+_DISK_FREE_SPACE_P2[1]="GB free in /home partition, when at least 20GB is needed. Proceed cautiously."
+_DISK[0]="Disco:"
+_DISK[1]="Disk:"
+_FREE_SPACE[0]="GB livres na particao do diretorio /home."
+_FREE_SPACE[1]="GB free in /home partition partition."
+_CPU_MSG_P1[0]="CPU: Um processador de"
+_CPU_MSG_P1[1]="CPU: A"
+_CPU_MSG_P2[0]="nucleos detectado."
+_CPU_MSG_P2[1]="-core/threads CPU detected."
+_CPU_BUGS_DETAILS[0]="para detalhes."
+_CPU_BUGS_DETAILS[1]="for details."
+_DOWNLOAD_COMPLETE[0]="Download concluído"
+_DOWNLOAD_COMPLETE[1]="Download complete"
+_DEPENDENCIES_NOT_INSTALLED[0]="As seguintes dependencias nao estao instaladas:"
+_DEPENDENCIES_NOT_INSTALLED[1]="The following required dependencies are not installed:"
+_ASK_INSTALL_DEPENDECIES[0]="Voce deseja instalar as dependencias em falta?"
+_ASK_INSTALL_DEPENDECIES[1]="Do you want to install the missing dependencies?"
+_PRESS_ENTER_TO_CONTINUE_OR_CANCEL[0]="Pressione ENTER para continuar, Control + C para cancelar."
+_PRESS_ENTER_TO_CONTINUE_OR_CANCEL[1]="Press ENTER to continue, Control + C to cancel."
+_UPDATE_APT_GET[0]="OK, vamos entao atualizar a lista de pacotes do apt-get. Digite a senha, se for solicitada:"
+_UPDATE_APT_GET[1]="OK, let's first update the apt-get package list. Enter the password, if prompted:"
+_INSTALL_DEPENDENCIES[0]="Agora, vamos instalar as depedencias que estao em falta. Digite a senha, se for solicitada:"
+_INSTALL_DEPENDENCIES[1]="Now, I'll try to install the dependencies. Enter your password, if prompted:"
+_ALL_DEPENDENCIES_INSTALLED[0]="Todas as dependencias estao instaladas."
+_ALL_DEPENDENCIES_INSTALLED[1]="All dependencies are currently installed."
+_PROJECT_TITLE[0]="Projeto: "
+_PROJECT_TITLE[1]="Project: "
+_PROJECT_NAME[0]="Nome do projeto"
+_PROJECT_NAME[1]="Project name"
+_PROJECT_ARCH[0]="Arquitetura"
+_PROJECT_ARCH[1]="Architeture"
+_PROJECT_SAVE[0]="Salvar projeto"
+_PROJECT_SAVE[1]="Save project"
+_PROJECT_KERNEL[0]="Versao do Kernel"
+_PROJECT_KERNEL[1]="Kernel Version"
+_PROJECT_OPTM[0]="Otimizacao da arquitetura"
+_PROJECT_OPTM[1]="Arch optimization"
+_PROJECT_THREADS[0]="Tarefas paralelas de compilacao"
+_PROJECT_THREADS[1]="Threads"
+_PROJECT_CONFIGURATION[0]="Utilitário de Configuracao do Kernel"
+_PROJECT_CONFIGURATION[1]="Kernel Setup Utility"
+_NEW_PROJECT[0]="Novo projeto"
+_NEW_PROJECT[1]="New Project"
+_THREADS[0]="processos simultâneos"
+_THREADS[1]="threads"
+_PROJECT_SAVE_CHANGES[0]="Salvar alteracões no arquivo do projeto."
+_PROJECT_SAVE_CHANGES[1]="Save changes to project file."
+_GENERATE_CONFIG_FILE_TXT[0]="Customizar arquivo .config"
+_GENERATE_CONFIG_FILE_TXT[1]="Configure Kernel setup file"
+_CREATE_LOCAL_FILES[0]="Criar estrutura local para gerenciar arquivos"
+_CREATE_LOCAL_FILES[1]="Create local stucture to manage files"
+_DOWNLOAD_KERNEL_FILES[0]="1. Download pacote do Kernel"
+_DOWNLOAD_KERNEL_FILES[1]="1. Download Kernel package"
+_DOWNLOAD_KERNEL_FILES_TXT[0]="Fazer download do pacote do Kernel"
+_DOWNLOAD_KERNEL_FILES_TXT[1]="Store local cache package"
+_EXTRACT_KERNEL_FILES[0]="2. Extrair arquivos do Kernel"
+_EXTRACT_KERNEL_FILES[1]="2. Extract Kernel files"
+_CLEAN_TEMPORARY_FILES[0]="3. Limpar arquivos temporários"
+_CLEAN_TEMPORARY_FILES[1]="3. Clean temporary files"
+_GENERATE_CONFIG_FILE[0]="4. Configurar o Kernel"
+_GENERATE_CONFIG_FILE[1]="4. Configure Kernel"
+_CLEAN_TEMPORARY_FILES_TXT[0]="Remover arquivos pre'-compilados"
+_CLEAN_TEMPORARY_FILES_TXT[1]="Remove pre-compiled files"
+_PROJECT_START_BUILD[0]="5. Iniciar compilacao"
+_PROJECT_START_BUILD[1]="5. Start build"
+_PROJECT_START_BUILD_TXT[0]=""
+_PROJECT_START_BUILD_TXT[1]=""
+_PROJECT_FOLDER_EMPTY_ERROR[0]="Nao há pasta de trabalho do projeto existente.\nVoce precisa selecionar '$_EXTRACT_KERNEL_FILES' para continuar."
+_PROJECT_FOLDER_EMPTY_ERROR[1]="There is no current project work folder.\nYou must select '$_EXTRACT_KERNEL_FILES' to continue."
+_NO_SPACE_IN_DISK[0]="Sem espaco livre em disco ou erro desconhecido."
+_NO_SPACE_IN_DISK[1]="No free space in disk or unknown error."
+_PROJECT_PREFIX[0]="Prefixo do projeto"
+_PROJECT_PREFIX[1]="Project prefix"
+_PKG_NOT_FOUND[0]="O pacote do Kernel selecionado nao foi encontrado.\n\nSelecione '$_DOWNLOAD_KERNEL_FILES' antes de continuar."
+_PKG_NOT_FOUND[1]="Package not found.\n\nSelect '$_DOWNLOAD_KERNEL_FILES' before continue."
+_PROJECT_PREFIX_CUSTOM[0]="Sem prefixo customizado"
+_PROJECT_PREFIX_CUSTOM[1]="Without custom prefix"
+_CUSTOM_PREFIX_ON_TXT[0]="Definir prefixo customizado do Kernel"
+_CUSTOM_PREFIX_ON_TXT[1]="Set the custom kernel version prefix"
+_CUSTOM_PREFIX_OFF_TXT[0]="nao utilizar prefixo personalizado"
+_CUSTOM_PREFIX_OFF_TXT[1]="Do not use custom kernel version prefix"
+_CUSTOM_PREFIX_TXT[0]="Defines whether to use a prefix along with the kernel version.\nExample: Kernel 3.8.10-custom_prefix_here."
+_CUSTOM_PREFIX_TXT[1]="Escolha o prefixo a ser utilizado com a versao do Kernel.\nExamplo: Kernel 3.8.10-prefixo_customizado_aqui."
+_SELECT_CONFIG_MODE[0]="Selecione o Utilitário de Configuracao do Kernel:"
+_SELECT_CONFIG_MODE[1]="Select the Kernel configuration utility:"
+_TEXT_MODE[0]="Modo de texto"
+_TEXT_MODE[1]="Text mode"
+_GRAFICAL_MODE[0]="Modo grafico"
+_GRAFICAL_MODE[1]="Graphical mode"
+_KERNEL_VERSION[0]="Versao do Kernel"
+_KERNEL_VERSION[1]="Kernel version"
+_COMPILATION_COMPLETED_SUCESSFULLY[0]="Compilacao concluída com sucesso. Status da saída:"
+_COMPILATION_COMPLETED_SUCESSFULLY[1]="Compilation completed successfully. Exit status:"
+_PROJECT_LOCATION_TXT[0]="Local de trabalho do projeto:"
+_PROJECT_LOCATION_TXT[1]="Project location build:"
+_CELL_PS3_INFO[0]="**NOTA** A implementacao da compatibilidade do processador Cell Broadband Engine do PlayStation 3 disponibiliza a capacidade de compilacao e otimizacao em qualquer plataforma, entretanto, o KFN nao oferece recursos exclusivos desta plataforma, como compatibilidade com RSX e reproducao de discos Bluray, a menos que o Kernel e o arquivo de configuracões .config disponibilizem os modulos e compatibilidade para estes dispositivos. Sistemas PS3 com Firmware 3.21 ou versões superiores e modelos FAT (NOR), Slim e Super Slim somente suportarao Linux usando OtherOS++."
+_CELL_PS3_INFO[1]="**NOTE** The implementation of compatibility with the Cell Broadband Engine processor of the PlayStation 3 is only intended to apply optimizations in the Kernel, in which it does not offer any other platform-specific additional features, such as RSX and PS3 Bluray drive or playback support, unless the target version of the Kernel, .config or patch has support enabled for this. Systems with PS3 firmware 3.21 or higher versions, Slim or Superslim models will only support Linux through the use of OtherOS++."
+_I386_SUPPORT_WARN[0]="**NOTE** Official support for the i386 architecture has been removed since Kernel 3.8, but you can choose the i686 architecture that still continues to be officially supported as the x86/32bits architecture by the newer versions.\n\nYou may have problems trying to compile Kernel 3.8 code or newer versions for i386 architecture. If your processor was manufactured in 2000 (such as Pentium 4 or Athlon64) or later, you can choose the i686 architecture compatible with most new x86 processors.\n\nSee: https://bit.ly/2EMx6jY"
+_I386_SUPPORT_WARN[1]="**NOTE** Official support for the i386 architecture has been removed since Kernel 3.8, but you can choose the i686 architecture that still continues to be officially supported as the x86 architecture by the newer versions.\n\nYou may have problems trying to compile Kernel 3.8 code or newer versions for i386 architecture. If your processor was manufactured in 2000 (such as Pentium 4 or Athlon64) or later, you can choose the i686 architecture compatible with most new x86 processors.\n\nSee: https://bit.ly/2EMx6jY"
+_IA64_SUPPORT_WARN[0]="**NOTE** IA64 (Itanium) is not an architecture compatible with x86 or x86_64/AMD64 code.\n\nYou will not be able to run IA64 compiled code on an x86_64/AMD64 processor machine, or vice versa, in this case you will need an IA64 (Itanium) based processor."
+_IA64_SUPPORT_WARN[1]="**NOTE** IA64 (Itanium) is not an architecture compatible with x86 or x86_64/AMD64 code.\n\nYou will not be able to run IA64 compiled code on an x86_64/AMD64 processor machine, or vice versa, in this case you will need an IA64 (Itanium) based processor."
+_FREE_SPACE_ERROR[0]="You only have free GB on disk in the root partition, and you need at least GB. Failure to do so will cause problems in the compilation, impossibility of installing the new kernel and may compromise the operation of the system due to lack of space. Make sure you have at least a free GB for the compilation to take place successfully."
+_FREE_SPACE_ERROR[1]="You only have free GB on disk in the root partition, and you need at least GB. Failure to do so will cause problems in the compilation, impossibility of installing the new kernel and may compromise the operation of the system due to lack of space. Make sure you have at least a free GB for the compilation to take place successfully."
+_HYPER_V_MACHINE[0]="O KFN nao pode ser executado no Windows Subsystem for Linux. Saindo."
+_HYPER_V_MACHINE[1]="KFN cannot be run on Windows Subsystem for Linux. Existing."
+_SEE_YOU_SOON[0]="Nos vemos em breve. Ate' mais."
+_SEE_YOU_SOON[1]="See you soon. Good bye."
+_BUILDS[0]="           Compilacoes:"
+_BUILDS[1]="        Builds:"
+_SOURCE[0]="                 Fonte:"
+_SOURCE[1]="        Source:"
+_DOWNLOADS[0]="             Downloads:"
+_DOWNLOADS[1]="     Downloads:"
+_SET_KFN_DIR[0]="Config. dir. do KFN em:"
+_SET_KFN_DIR[1]="Set KFN dir as:"
+
+
+_MENUCONFIG="menuconfig"
+_XCONFIG="xconfig"
+_DEFAULT="Default"
+_PROJECT_PREFIX_CUSTOM="Custom"
+_CUSTOM_PREFIX_ON="Enabled"
+_CUSTOM_PREFIX_OFF="Disabled"
+_GCC="GNU Compiler Collection"
+_LLVM="Low Level Virtual Machine"
+#_VMWARE_MACHINE="VMware ${_DEFAULT_VM_MACHINE[$LANGUAGE]}"
+#_QEMU_MACHINE="QEMU ${_DEFAULT_VM_MACHINE[$LANGUAGE]}"
+#_VIRTUALBOX_MACHINE="VirtualBox ${_DEFAULT_VM_MACHINE[$LANGUAGE]}"
+
+
+MIN_DISK_CAPACITY_FREE=20 # Min of 20GB free in / is needed.
 DEFAULT_TITLE=" $TITLE v$VERSION (under development) "
 
 _set_language()
@@ -70,264 +310,29 @@ _set_language()
 	do
 		title
 
-		echo -e "Para Portugues (PT-BR), digite 1 e pressione ENTER."
-		echo -e "For English (EN-US), type 2 and press ENTER."
+		echo -e "Selecione o idioma: Para Portugues (PT-BR), digite 0 e pressione ENTER."
+		echo -e "Select language: For English (EN-US), type 1 and press ENTER."
 
-		read SELECT_LANGUAGE
+		read LANGUAGE
 
-		case "$SELECT_LANGUAGE" in
+		case "$LANGUAGE" in
 
-			"1")
+			"0")
 				SET_LANG=1 ;;
-			"2")
+			"1")
 				SET_LANG=1 ;;
 			*)
 				SET_LANG=0 ;;
 		esac
 	done
 
-	echo "$SELECT_LANGUAGE" > "$HOME/kfn/language"
+	echo "$LANGUAGE" > "$HOME/kfn/language"
 }
 
-_load_language()
-{
-	if [ "$SELECT_LANGUAGE" == "1" ]
-	then
-		_COMPILER="Compilador"
-		_COMPILER_TXT="Compiladores disponívels para"
-		_LOCAL_CACHE="Nao há cache do pacote do Kernel criado. Realizando download do pacote"
-		_ALL_FILES_EXTRACTED="Todos os arquivos foram extraídos com sucesso."
-		_UNKNOWN_ERROR="Saindo devido ao erro desconhecido:"
-		_EXIT_BY_ERROR="Saindo pelo erro"
-		_RECOMMENDED_RAM_SIZE="Recomendado: >= 4096 MB de RAM e pelo menos 1024 MB de Swap."
-		_SEARCHING_FOR_DEPENDENCIES="Procurando por dependencias"
-		_CPU_BUGS="Bugs ou falhas de seguranca foram detectados no seu CPU:"
-		_SINGLE_CPU_MSG_P1="CPU: Seu processador possui apenas"
-		_SINGLE_CPU_MSG_P2="nucleos disponíveis.\n	   Compilar o Kernel neste sistema pode levar um tempo muito longo."
-		_SEE="Veja"
-		_CANCELLED_BY_USER="Cancelado pelo usuário."
-		_UNKNOWN="Desconhecido."
-		_ALL_READY="** Tudo pronto. Pressione ENTER para iniciar o $TITLE **"
-		_ALSO_AMD64="tambe'm AMD64"
-		_NEWER_X86="novos processadores x86"
-		_OLD_X86="antigos processadores x86"
-		_DEFAULT_CFLAGS_TEXT="Select safe/preset CFLAGS optimization for"
-		_WINDOWS_SUBSYSTEM_INCOMPATIBLE_MSG="nao e' compativel com Linux on Windows Subsystem, experimente utilizar num sistema sendo executado no VirtualBox, Vmware, QEMU/KVM ou dual-boot."
-		_ERROR_DOWNLOAD="Ocorreu um erro enquanto o arquivo era baixado. Status:"
-		_PRESS_ANY_KEY_TO_CONTINUE="Pressione ENTER para continuar."
-		_TMP_RW_ALLOWED="Leitura e escrita em /tmp e' aceito."
-		_DEFAULT_VM_MACHINE="e' detectado como maquina virtual hospedeira. Desempenho pode ser reduzido."
-		_SKIP_VALID_DOWNLOAD="Nao e' necessario download pois já existe um pacote do Kernel baixado e validado por MD5."
-		_PRESS_ENTER_TO_CONTINUE="$_PRESS_ANY_KEY_TO_CONTINUE"
-		_LACK_OF_PS2_SUPPORT="Sistema Sony PlayStation 2 nao e' mais suportado desde o KFN v2.8. Saindo..."
-		_LACK_OF_PS3_SUPPORT="Sistema PlayStation 3 systems nao e' totalmente compativel desde KFN v3.0."
-		_CPU_BUGS_MSG="$_CPU_BUGS"
-		_X86_64_CFLAGS="CFLAGS x86_64 genericas"
-		_X86_64_TITLE="$_DEFAULT_CFLAGS_TEXT Arquitetura Intel x86_64:"
-		_SELECT_TARGET_ARCH="Selecione a arquitetura alvo.\nSe voce deseja compilar para esta mesma máquina, selecione:"
-		_SAVED_PROJECT="Projeto salvo como:"
-		_SELECT_NUMBER_OF_THREADS="Selecione o numero de nucleos a serem usados para compilar o codigo (1 to 1024).\n\nValor recomendado para este sistema:"
-		_CLEAN_MAKE_FILES="Removendo arquivos pre' compilados. Isso pode levar alguns minutos."
-		_OVERRIDE_FILE="Voce deseja sobrescrever o seguinte arquivo:"
-		_KERNEL_SETUP_UTILITY="Compilando arquivos do Utilitário de Configuracao do Kernel, por favor, aguarde."
-		_TITLE_CANNOT_BE_EMPTY="Nome do projeto nao pode estar vazio."
-		_PREFIX_CANNOT_BE_EMPTY="Prefixo nao pode ficar vazio."
-		_CONFIG_NOT_FOUND="Arquivo de configuracao do Kernel nao localizado.\nTenha certeza de que ele foi salvo com o seguinte nome: .config"
-		_THREADS_CANNOT_BE_EMPTY="Valor de tarefas nao pode ficar fazio."
-		_THREADS_CANNOT_BE_ZERO="Valor de tarefas nao pode ser '0' ou negativo, precisa ser pelo menos '1', a menos que voce esteja na Matrix e Morpheus autorizou voce a utilizar esse valor."
-		_START_BUILD="Iniciando compilacao do Kernel para:"
-		_SET_PROJECT_NAME="Digite o nome do projeto:"
-		_CROSS_COMPILATION_INFO="(modo de compilacao-cruzada)"
-		_SET_PROJECT_PREFIX="Selecione o profixo a ser utilizado.\n\nNote que poderá ser utilizado somente letras (A-Z, a-z), numeros (0-9), traco, ponto e underline sao recomendados.\n\nEspaco e caracteres especiais nao sao permitidos."
-		_PROJECT_LOCATION_BUILD="Estrutura local do projeto"
-		_FOLDER_IS_NOT_EMPTY="O seguinte diretorio nao está vazio:"
-		_CONTINUE_TO_EMPTY_DIR="Para extrair e continuar, e' necessário apagar os arquivos. Voce deseja remover o conteudo deste diretorio?"
-		_SRC_RO_MSG="Acesso de leitura e escrita em /usr/src foi permitido."
-		_TMP_RO_MSG="Acesso de somente leitura em /tmp."
-		_SRC_RW_MSG="Acesso de somente leitura em /usr/src. Talvez será necessário acesso Root."
-		_EXTRACTING_PACKAGES="Extraindo pacote, diretorio de saida:"
-		_DISK_FREE_SPACE_P1="Disco: Apenas"
-		_DISK_FREE_SPACE_P2="GB estao livre na particao da pasta /home, onde pelo menos 20GB e' necessario. Proceda com cuidado."
-		_DISK="Disco:"
-		_FREE_SPACE="GB livres na particao do diretorio /home."
-		_CPU_MSG_P1="CPU: Um processador de"
-		_CPU_MSG_P2="nucleos detectado."
-		_CPU_BUGS_DETAILS="para detalhes."
-		_DOWNLOAD_COMPLETE="Download concluído"
-		_DEPENDENCIES_NOT_INSTALLED="As seguintes dependencias nao estao instaladas:"
-		_ASK_INSTALL_DEPENDECIES="Voce deseja instalar as dependencias em falta?"
-		_PRESS_ENTER_TO_CONTINUE_OR_CANCEL="Pressione ENTER para continuar, Control + C para cancelar."
-		_UPDATE_APT_GET="OK, vamos entao atualizar a lista de pacotes do apt-get. Digite a senha, se for solicitada:"
-		_INSTALL_DEPENDENCIES="Agora, vamos instalar as depedencias que estao em falta. Digite a senha, se for solicitada:"
-		_ALL_DEPENDENCIES_INSTALLED="Todas as dependencias estao instaladas."
-		_PROJECT_TITLE="Projeto: "
-		_PROJECT_NAME="Nome do projeto"
-		_PROJECT_ARCH="Arquitetura"
-		_PROJECT_SAVE="Salvar projeto"
-		_PROJECT_KERNEL="Versao do Kernel"
-		_PROJECT_OPTM="Otimizacao da arquitetura"
-		_PROJECT_THREADS="Tarefas paralelas de compilacao"
-		_PROJECT_CONFIGURATION="Utilitário de Configuracao do Kernel"
-		_NEW_PROJECT="Novo projeto"
-		_THREADS="processos simultâneos"
-		_PROJECT_SAVE_CHANGES="Salvar alteracões no arquivo do projeto."
-		_GENERATE_CONFIG_FILE_TXT="Customizar arquivo .config"
-		_CREATE_LOCAL_FILES="Criar estrutura local para gerenciar arquivos"
-		_DOWNLOAD_KERNEL_FILES="1. Download pacote do Kernel"
-		_DOWNLOAD_KERNEL_FILES_TXT="Fazer download do pacote do Kernel"
-		_EXTRACT_KERNEL_FILES="2. Extrair arquivos do Kernel"
-		_CLEAN_TEMPORARY_FILES="3. Limpar arquivos temporários"
-		_GENERATE_CONFIG_FILE="4. Configurar o Kernel"
-		_CLEAN_TEMPORARY_FILES_TXT="Remover arquivos pre'-compilados"
-		_PROJECT_START_BUILD="5. Iniciar compilacao"
-		_PROJECT_START_BUILD_TXT=""
-		_PROJECT_FOLDER_EMPTY_ERROR="Nao há pasta de trabalho do projeto existente.\nVoce precisa selecionar '$_EXTRACT_KERNEL_FILES' para continuar."
-		_NO_SPACE_IN_DISK="Sem espaco livre em disco ou erro desconhecido."
-		_PROJECT_PREFIX="Prefixo do projeto"
-		_PKG_NOT_FOUND="O pacote do Kernel selecionado nao foi encontrado.\n\nSelecione '$_DOWNLOAD_KERNEL_FILES' antes de continuar."
-		_PROJECT_PREFIX_CUSTOM="Sem prefixo customizado"
-		_CUSTOM_PREFIX_ON_TXT="Definir prefixo customizado do Kernel"
-		_CUSTOM_PREFIX_OFF_TXT="nao utilizar prefixo personalizado"
-		_CUSTOM_PREFIX_TXT="Escolha o prefixo a ser utilizado com a versao do Kernel.\nExamplo: Kernel 3.8.10-prefixo_customizado_aqui."
-		_SELECT_CONFIG_MODE="Selecione o Utilitário de Configuracao do Kernel:"
-		_TEXT_MODE="Modo de texto"
-		_GRAFICAL_MODE="Modo grafico"
-		_KERNEL_VERSION="Versao do Kernel"
-		_COMPILATION_COMPLETED_SUCESSFULLY="Compilacao concluída com sucesso. Status da saída:"
-		_PROJECT_LOCATION_TXT="Local de trabalho do projeto:"
-		_CELL_PS3_INFO="**NOTA** A implementacao da compatibilidade do processador Cell Broadband Engine do PlayStation 3 disponibiliza a capacidade de compilacao e otimizacao em qualquer plataforma, entretanto, o KFN nao oferece recursos exclusivos desta plataforma, como compatibilidade com RSX e reproducao de discos Bluray, a menos que o Kernel e o arquivo de configuracões .config disponibilizem os modulos e compatibilidade para isto. Sistemas PS3 com Firmware 3.21 ou versões superiores e modelos FAT (NOR), Slim e Super Slim somente suportarao Linux usando OtherOS++."
-		_I386_SUPPORT_WARN="**NOTE** Official support for the i386 architecture has been removed since Kernel 3.8, but you can choose the i686 architecture that still continues to be officially supported as the x86 architecture by the newer versions.\n\nYou may have problems trying to compile Kernel 3.8 code or newer versions for i386 architecture. If your processor was manufactured in 2000 (such as Pentium 4 or Athlon64) or later, you can choose the i686 architecture compatible with most new x86 processors.\n\nSee: https://bit.ly/2EMx6jY"
-		_IA64_SUPPORT_WARN="**NOTE** IA64 (Itanium) is not an architecture compatible with x86 or x86_64/AMD64 code.\n\nYou will not be able to run IA64 compiled code on an x86_64/AMD64 processor machine, or vice versa, in this case you will need an IA64 (Itanium) based processor."
-		_FREE_SPACE_ERROR="You only have free GB on disk in the root partition, and you need at least GB. Failure to do so will cause problems in the compilation, impossibility of installing the new kernel and may compromise the operation of the system due to lack of space. Make sure you have at least a free GB for the compilation to take place successfully."
-		_HYPER_V_MACHINE="O KFN nao pode ser executado no Windows Subsystem for Linux. Saindo."
-		_SEE_YOU_SOON="Nos vemos em breve. Ate' mais."
-	fi
 
-	if [ "$SELECT_LANGUAGE" == "2" ]
-	then
-		_COMPILER="Compiler"
-		_COMPILER_TXT="Compilers available for"
-		_LOCAL_CACHE="There is no cache of the Kernel package created. Downloading the package"
-		_ALL_FILES_EXTRACTED="All files have been extracted successfully."
-		_UNKNOWN_ERROR="Exit by unknown error:"
-		_EXIT_BY_ERROR="Exit by error"
-		_RECOMMENDED_RAM_SIZE="recommended: >= 4096 MB RAM and at least 1024 MB Swap."
-		_SEARCHING_FOR_DEPENDENCIES="Searching for dependencies"
-		_CPU_BUGS="Bugs or security holes have been detected on your CPU."
-		_SINGLE_CPU_MSG_P1="CPU: Your system has only"
-		_SINGLE_CPU_MSG_P2="available CPU cores.\n	   Compiling the kernel on this system can take a very long time."
-		_SEE="See"
-		_CANCELLED_BY_USER="Cancelled by user."
-		_UNKNOWN="Unknown."
-		_ALL_READY="** All ready. Press ENTER to start $TITLE **"
-		_ALSO_AMD64="also AMD64"
-		_NEWER_X86="newer x86 processors"
-		_OLD_X86="old x86 processors"
-		_DEFAULT_CFLAGS_TEXT="Select safe/preset CFLAGS optimization for"
-		_WINDOWS_SUBSYSTEM_INCOMPATIBLE_MSG="is not compatible with Linux on Windows subsystem, try VirtualBox, Vmware, QEMU, Linux-KVM or dual-boot. Exiting."
-		_ERROR_DOWNLOAD="Error while downloading file. Status:"
-		_PRESS_ANY_KEY_TO_CONTINUE="Press ENTER to continue."
-		_TMP_RW_ALLOWED="Read/Write access in /tmp is allowed."
-		_DEFAULT_VM_MACHINE="is detected as virtual machine host. Performance may be reduced."
-		_SKIP_VALID_DOWNLOAD="It is not necessary to download since there is already a Kernel package downloaded and validated by MD5."
-		_PRESS_ENTER_TO_CONTINUE="$_PRESS_ANY_KEY_TO_CONTINUE"
-		_LACK_OF_PS2_SUPPORT="Sony PlayStation 2 systems ARE NOT SUPPORTED anymore since KFN v2.8. Please exit."
-		_LACK_OF_PS3_SUPPORT="Sony PlayStation 3 systems no longer have full KFN oficial support since v3.0."
-		_CPU_BUGS_MSG="Hardware/silicon-level CPU critical issue found:"
-		_X86_64_CFLAGS="Generic x86_64 CFLAGS"
-		_X86_64_TITLE="$_DEFAULT_CFLAGS_TEXT Intel x86_64 arch:"
-		_SELECT_TARGET_ARCH="Select the target architecture.\nIf you want to compile for this same computer, select:"
-		_SAVED_PROJECT="Project saved as:"
-		_SELECT_NUMBER_OF_THREADS="Set the number of threads to use when compiling the code (1 to 1024).\n\nRecommended value for this system:"
-		_CLEAN_MAKE_FILES="Removing precompiled files. This may take some time."
-		_OVERRIDE_FILE="Do you want to overwrite the current file:"
-		_KERNEL_SETUP_UTILITY="Compiling files for Kernel Setup Utility, please wait."
-		_TITLE_CANNOT_BE_EMPTY="Project name cannot be empty."
-		_PREFIX_CANNOT_BE_EMPTY="Prefix cannot be empty."
-		_CONFIG_NOT_FOUND="Kernel configuration file not found.\nMake sure it has been saved as .config name."
-		_THREADS_CANNOT_BE_EMPTY="Threads value cannot be empty."
-		_THREADS="threads"
-		_THREADS_CANNOT_BE_ZERO="Threads value cannot be '0' or negative, must be at least '1', unless you are in the Matrix and Morpheus authorize you to use this value."
-		_START_BUILD="Started kernel compilation for:"
-		_SET_PROJECT_NAME="Type the project name:"
-		_CROSS_COMPILATION_INFO="(cross-compile mode)"
-		_SET_PROJECT_PREFIX="Choose the name of the prefix to be used.\n\nNote that only letters (A-Z, a-z), numbers (0-9), stroke, point, and underline are recommended.\n\nSpace and special characters are not allowed."
-		_PROJECT_LOCATION_BUILD="Local project structure"
-		_FOLDER_IS_NOT_EMPTY="The following directory is not empty:"
-		_CONTINUE_TO_EMPTY_DIR="To extract and continue, you must delete the files. Do you want to remove the contents of the directory?"
-		_SRC_RO_MSG="Read/Write access in /usr/src is allowed."
-		_TMP_RO_MSG="Read-only access in /tmp."
-		_SRC_RW_MSG="Read-only access in /usr/src."
-		_EXTRACTING_PACKAGES="Extracting package, output directory:"
-		_DISK_FREE_SPACE_P1="Disk: Only"
-		_DISK_FREE_SPACE_P2="GB free in /home partition, when at least 20GB is needed. Proceed cautiously."
-		_DISK="Disk:"
-		_FREE_SPACE="GB free in /home partition partition."
-		_CPU_MSG_P1="CPU: A"
-		_CPU_MSG_P2="-core/threads CPU detected."
-		_CPU_BUGS_DETAILS="for details."
-		_DOWNLOAD_COMPLETE="Download complete"
-		_DEPENDENCIES_NOT_INSTALLED="The following required dependencies are not installed:"
-		_ASK_INSTALL_DEPENDECIES="Do you want to install the missing dependencies?"
-		_PRESS_ENTER_TO_CONTINUE_OR_CANCEL="Press ENTER to continue, Control + C to cancel."
-		_UPDATE_APT_GET="OK, let's first update the apt-get package list. Enter the password, if prompted:"
-		_INSTALL_DEPENDENCIES="Now, I'll try to install the dependencies. Enter your password, if prompted:"
-		_ALL_DEPENDENCIES_INSTALLED="All dependencies are currently installed."
-		_PROJECT_TITLE="Project: "
-		_PROJECT_NAME="Project name"
-		_PROJECT_ARCH="Architeture"
-		_PROJECT_SAVE="Save project"
-		_PROJECT_KERNEL="Kernel Version"
-		_PROJECT_OPTM="Arch optimization"
-		_PROJECT_THREADS="Threads"
-		_PROJECT_CONFIGURATION="Kernel Setup Utility"
-		_NEW_PROJECT="New Project"
-		_PROJECT_SAVE_CHANGES="Save changes to project file."
-		_GENERATE_CONFIG_FILE_TXT="Configure Kernel setup file"
-		_CREATE_LOCAL_FILES="Create local stucture to manage files"
-		_DOWNLOAD_KERNEL_FILES="1. Download Kernel package"
-		_DOWNLOAD_KERNEL_FILES_TXT="Store local cache package"
-		_EXTRACT_KERNEL_FILES="2. Extract Kernel files"
-		_CLEAN_TEMPORARY_FILES="3. Clean temporary files"
-		_GENERATE_CONFIG_FILE="4. Configure Kernel"
-		_CLEAN_TEMPORARY_FILES_TXT="Remove pre-compiled files"
-		_PROJECT_START_BUILD="5. Start build"
-		_PROJECT_START_BUILD_TXT=""
-		_PROJECT_FOLDER_EMPTY_ERROR="There is no current project work folder.\nYou must select '$_EXTRACT_KERNEL_FILES' to continue."
-		_PROJECT_PREFIX="Project prefix"
-		_PKG_NOT_FOUND="Package not found.\n\nSelect '$_DOWNLOAD_KERNEL_FILES' before continue."
-		_PROJECT_PREFIX_CUSTOM="Without custom prefix"
-		_CUSTOM_PREFIX_ON_TXT="Set the custom kernel version prefix"
-		_CUSTOM_PREFIX_OFF_TXT="Do not use custom kernel version prefix"
-		_CUSTOM_PREFIX_TXT="Defines whether to use a prefix along with the kernel version.\nExample: Kernel 3.8.10-custom_prefix_here."
-		_NO_SPACE_IN_DISK="No free space in disk or unknown error."
-		_SELECT_CONFIG_MODE="Select the Kernel configuration utility:"
-		_TEXT_MODE="Text mode"
-		_KERNEL_VERSION="Kernel version"
-		_GRAFICAL_MODE="Graphical mode"
-		_COMPILATION_COMPLETED_SUCESSFULLY="Compilation completed successfully. Exit status:"
-		_PROJECT_LOCATION_TXT="Project location build:"
-		_CELL_PS3_INFO="**NOTE** The implementation of compatibility with the Cell Broadband Engine processor of the PlayStation 3 is only intended to apply optimizations in the Kernel, in which it does not offer any other platform-specific additional features, such as RSX and PS3 Bluray drive or playback support, unless the target version of the Kernel, .config or patch has support enabled for this. Systems with PS3 firmware 3.21 or higher versions, Slim or Superslim models will only support Linux through the use of OtherOS++."
-		_I386_SUPPORT_WARN="**NOTE** Official support for the i386 architecture has been removed since Kernel 3.8, but you can choose the i686 architecture that still continues to be officially supported as the x86/32bits architecture by the newer versions.\n\nYou may have problems trying to compile Kernel 3.8 code or newer versions for i386 architecture. If your processor was manufactured in 2000 (such as Pentium 4 or Athlon64) or later, you can choose the i686 architecture compatible with most new x86 processors.\n\nSee: https://bit.ly/2EMx6jY"
-		_IA64_SUPPORT_WARN="**NOTE** IA64 (Itanium) is not an architecture compatible with x86 or x86_64/AMD64 code.\n\nYou will not be able to run IA64 compiled code on an x86_64/AMD64 processor machine, or vice versa, in this case you will need an IA64 (Itanium) based processor."
-		_FREE_SPACE_ERROR="You only have free GB on disk in the root partition, and you need at least GB. Failure to do so will cause problems in the compilation, impossibility of installing the new kernel and may compromise the operation of the system due to lack of space. Make sure you have at least a free GB for the compilation to take place successfully."
-		_HYPER_V_MACHINE="KFN cannot be run on Windows Subsystem for Linux. Existing."
-		_SEE_YOU_SOON="See you soon. Good bye."
-	fi
-}
 
 CROSS_CC=0
-_MENUCONFIG="menuconfig"
-_XCONFIG="xconfig"
-_DEFAULT="Default"
-_PROJECT_PREFIX_CUSTOM="Custom"
-_CUSTOM_PREFIX_ON="Enabled"
-_CUSTOM_PREFIX_OFF="Disabled"
-_GCC="GNU Compiler Collection"
-_LLVM="Low Level Virtual Machine"
-_VMWARE_MACHINE="VMware $_DEFAULT_VM_MACHINE"
-_QEMU_MACHINE="QEMU $_DEFAULT_VM_MACHINE"
-_VIRTUALBOX_MACHINE="VirtualBox $_DEFAULT_VM_MACHINE"
+
 
 MicrosoftSystemID="Microsoft@Microsoft.com"
 DOWNLOAD_DIR="$HOME/kfn/downloads"
@@ -354,22 +359,22 @@ print()
 
 	if [ "$MODE" == "ok" ]
 	then
-		echo -e "\e[32;1m[ OK ]\e[m $TEXT"
+		echo -e "\e[32;1m[ OK ]\e[m  $TEXT"
 	fi
 
 	if [ "$MODE" == "info" ]
 	then
-		echo -e "\e[32;1m[INFO]\e[m $TEXT"
+		echo -e "\e[32;1m[INFO]\e[m  $TEXT"
 	fi
 
 	if [ "$MODE" == "warn" ]
 	then
-		echo -e "\e[33;1m[WARN]\e[m $TEXT"
+		echo -e "\e[33;1m[WARN]\e[m  $TEXT"
 	fi
 
 	if [ "$MODE" == "error" ]
 	then
-		echo -e "\e[31;1m[ERRO]\e[m $TEXT"
+		echo -e "\e[31;1m[ERRO]\e[m  $TEXT"
 	fi
 
 	echo "[$MODE] $TEXT" >> "$LOG_DIR/$KFNTIME.log"
@@ -391,16 +396,21 @@ _start()
 		_set_language
 	fi
 
-	SELECT_LANGUAGE=`cat $HOME/kfn/language`
+	LANGUAGE=`cat $HOME/kfn/language`
 
 	_load_language
 	_dialog_scheme_files
 
-	print ok "Set KFN dir as: $HOME/kfn"
-	print ok "     Downloads: $DOWNLOAD_DIR"
-	print ok "	       Source: $SOURCE_DIR"
-	print ok "	       Builds: $BUILD_DIR"
+	print ok "${_SET_KFN_DIR[$LANGUAGE]} $HOME/kfn"
+	print ok "${_DOWNLOADS[$LANGUAGE]} $DOWNLOAD_DIR"
+	print ok "${_SOURCE[$LANGUAGE]} $SOURCE_DIR"
+	print ok "${_BUILDS[$LANGUAGE]} $BUILD_DIR"
 }
+
+
+
+
+
 
 # Dialog utility color scheme White:
 
@@ -554,9 +564,9 @@ _disk_usage()
 
 	if [ $DISK_USAGE -lt $MIN_DISK_CAPACITY_FREE ]
 	then
-		print error "$_DISK_FREE_SPACE_P1 $DISK_USAGE $_DISK_FREE_SPACE_P2"
+		print error "${_DISK_FREE_SPACE_P1[$LANGUAGE]} $DISK_USAGE ${_DISK_FREE_SPACE_P2[$LANGUAGE]}"
 	else
-		print ok "$_DISK $DISK_USAGE $_FREE_SPACE"
+		print ok "${_DISK[$LANGUAGE]} $DISK_USAGE ${_FREE_SPACE[$LANGUAGE]}"
 	fi
 }
 
@@ -568,9 +578,9 @@ _tmp_rw_check()
 
 	if [ -f "/tmp/$RND_VALUE" ]
 	then
-		print ok "$_TMP_RW_ALLOWED"
+		print ok "${_TMP_RW_ALLOWED[$LANGUAGE]}"
 	else
-		print error "$_TMP_RO_MSG"  
+		print error "${_TMP_RO_MSG[$LANGUAGE]}"  
 	fi
 }
 
@@ -582,9 +592,9 @@ _source_rw_check()
 
 	if [ -f "/usr/src/$RND_VALUE" ]
 	then
-		print ok "$_SRC_RO_MSG"
+		print ok "${_SRC_RO_MSG[$LANGUAGE]}"
 	else
-		print warn "$_SRC_RW_MSG"
+		print warn "${_SRC_RW_MSG[$LANGUAGE]}"
 	fi
 }
 
@@ -598,7 +608,7 @@ _ram_check()
 
 	if [ $MEM_SIZE -lt 2048 ]
 	then
-		print warn "RAM: $MEM_SIZE MB, $_RECOMMENDED_RAM_SIZE"
+		print warn "RAM: $MEM_SIZE MB, ${_RECOMMENDED_RAM_SIZE[$LANGUAGE]}"
 		#print info "PlayStation 3 Users: You can use Geforce VRAM (/dev/ps3da3) as a fast Swap partition."
 	else
 		print ok "RAM: $MEM_SIZE MB RAM + $SWAP_SIZE MB Swap."
@@ -611,7 +621,7 @@ _windows_subsystem_checker()
 
 	if [ "$WINDOWS_SUBSYSTEM" != 0 ]
 	then
-		print error "$TITLE $_WINDOWS_SUBSYSTEM_INCOMPATICLE_MSG" 
+		print error "$TITLE ${_WINDOWS_SUBSYSTEM_INCOMPATICLE_MSG[$LANGUAGE]}" 
 		exit
 	fi
 }
@@ -625,23 +635,23 @@ _vm_checker()
 
 	if [ $HV_CHECK != 0 ]
 	then
-		print warn "$_HYPER_V_MACHINE"
+		print warn "${_HYPER_V_MACHINE[$LANGUAGE]}"
 		#exit
 	fi
 
 	if [ $QEMU_CHECK != 0 ]
 	then
-		print info "$_QEMU_MACHINE"
+		print info "${_QEMU_MACHINE[$LANGUAGE]}"
 	fi
 
 	if [ $VMWARE_CHECK != 0 ]
 	then
-		print info "$_VMWARE_MACHINE"
+		print info "${_VMWARE_MACHINE[$LANGUAGE]}"
 	fi
 
 	if [ $VBOX_CHECK != 0 ]
 	then
-		print info "$_VIRTUALBOX_MACHINE"
+		print info "${_VIRTUALBOX_MACHINE[$LANGUAGE]}"
 	fi
 }
 
@@ -657,20 +667,20 @@ _cpu_cores()
 
 	if [ $CPU_THREADS -lt 4 ]
 	then
-		print warn "$_SINGLE_CPU_MSG_P1 $CPU_THREADS $_SINGLE_CPU_MSG_P2"
+		print warn "${_SINGLE_CPU_MSG_P1[$LANGUAGE]} $CPU_THREADS ${_SINGLE_CPU_MSG_P2[$LANGUAGE]}"
 	else
-		print ok "$_CPU_MSG_P1 $CPU_THREADS $_CPU_MSG_P2"
+		print ok "${_CPU_MSG_P1[$LANGUAGE]} $CPU_THREADS ${_CPU_MSG_P2[$LANGUAGE]}"
 	fi
 
 	if [ "`cat /proc/cpuinfo | grep Emotion | wc -l`" != 0 ]
 	then
-		print error "$_LACK_OF_PS2_SUPPORT"
+		print error "${_LACK_OF_PS2_SUPPORT[$LANGUAGE]}"
 		exit
 	fi
 
 	if [ "`cat /proc/cpuinfo | grep Cell | wc -l`" != 0 ]
 	then
-		print warn "$_LACK_OF_PS3_SUPPORT"
+		print warn "${_LACK_OF_PS3_SUPPORT[$LANGUAGE]}"
 	fi
 
 	HOST_ARCH="`uname -m`"
@@ -684,7 +694,7 @@ _cpu_bugs()
 		CPU_BUGS=`echo $CPU_BUGS`
 		CPU_BUGS=${CPU_BUGS/"bugs : "/"Bugs: "}
 
-		print warn "\e[33;1m$_CPU_BUGS\e[m\n\n		 \e[31;1m$CPU_BUGS\e[m\n		 $_SEE: 'cat /proc/cpuinfo | grep bugs' $_CPU_BUGS_DETAILS\n"
+		print warn "\e[33;1m${_CPU_BUGS[$LANGUAGE]}\e[m\n\n		 \e[31;1m$CPU_BUGS\e[m\n		 ${_SEE[$LANGUAGE]}: 'cat /proc/cpuinfo | grep bugs' ${_CPU_BUGS_DETAILS[$LANGUAGE]}\n"
 	fi
 	
 	}
@@ -695,11 +705,11 @@ _extract() # Usage: _extract file_url
 
 	if [ ! -f "$DOWNLOAD_DIR/$FILENAME_TAR" ]
 	then
-		dialog --title "$DEFAULT_TITLE" --msgbox "\n$_PKG_NOT_FOUND\n" 9 65
+		dialog --title "$DEFAULT_TITLE" --msgbox "\n${_PKG_NOT_FOUND[$LANGUAGE]}\n" 9 65
 	else
 		mkdir -p "$PROJECT_LOCATION_FILES/kernel"
 
-		print info "$_EXTRACTING_PACKAGES $PROJECT_LOCATION_FILES"
+		print info "${_EXTRACTING_PACKAGES[$LANGUAGE]} $PROJECT_LOCATION_FILES"
 
 		echo -e "\033[00;32m"
 		tar -xvvf "$DOWNLOAD_DIR/$FILENAME_TAR" -C "$PROJECT_LOCATION_FILES/kernel"
@@ -713,8 +723,8 @@ _extract() # Usage: _extract file_url
 		mv -u $PROJECT_LOCATION_FILES/kernel/*/.m* "$PROJECT_LOCATION_FILES/kernel"
 
 		echo
-		print info "$_ALL_FILES_EXTRACTED"
-		print ok "$_PRESS_ANY_KEY_TO_CONTINUE"
+		print info "${_ALL_FILES_EXTRACTED[$LANGUAGE]}"
+		print ok "${_PRESS_ANY_KEY_TO_CONTINUE[$LANGUAGE]}"
 		read a
 	fi
 }
@@ -739,7 +749,7 @@ _download()
 			rm "$DOWNLOAD_DIR/$FILENAME.st"
 		fi
 
-		print info "$_LOCAL_CACHE $FILENAME\n"
+		print info "${_LOCAL_CACHE[$LANGUAGE]} $FILENAME\n"
 
 		axel -a --insecure "$URL_SOURCE" -o "$DOWNLOAD_DIR/$FILENAME"
 
@@ -751,23 +761,23 @@ _download()
 			then
 				MD5=( `md5sum "$DOWNLOAD_DIR/$FILENAME"` )
 
-				print info "$_DOWNLOAD_COMPLETE $FILENAME: ${MD5[0]}"
+				print info "${_DOWNLOAD_COMPLETE[$LANGUAGE]} $FILENAME: ${MD5[0]}"
 
 				echo "${MD5[0]}" > "$DOWNLOAD_DIR/$FILENAME.md5"
 
-				dialog --title "$DEFAULT_TITLE" --msgbox "\n$_DOWNLOAD_COMPLETE: $FILENAME\nMD5: ${MD5[0]}" 8 75
+				dialog --title "$DEFAULT_TITLE" --msgbox "\n${_DOWNLOAD_COMPLETE[$LANGUAGE]}: $FILENAME\nMD5: ${MD5[0]}" 8 75
 			fi
 		fi
 	else
 		MD5=( `md5sum "$DOWNLOAD_DIR/$FILENAME"` )
-		dialog --title "$DEFAULT_TITLE" --msgbox "\n$_SKIP_VALID_DOWNLOAD\n\n$FILENAME: $MD5" 10 70
+		dialog --title "$DEFAULT_TITLE" --msgbox "\n${_SKIP_VALID_DOWNLOAD[$LANGUAGE]}\n\n$FILENAME: $MD5" 10 70
 	fi
 
 	if [ ! -f "$DOWNLOAD_DIR/$FILENAME" ]
 	then
 		echo
-		print error "$_ERROR_DOWNLOAD $DOWNLOAD_STATUS"
-		print info "$_PRESS_ANY_KEY_TO_CONTINUE"
+		print error "${_ERROR_DOWNLOAD[$LANGUAGE]} $DOWNLOAD_STATUS[$LANGUAGE]}"
+		print info "${_PRESS_ANY_KEY_TO_CONTINUE[$LANGUAGE]}"
 		read a
 	fi
 }
@@ -777,7 +787,7 @@ _check_dependencies()
 	POSITION="$1"
 
 	echo
-	print info "$_SEARCHING_FOR_DEPENDENCIES:\n"
+	print info "${_SEARCHING_FOR_DEPENDENCIES[$LANGUAGE]}:\n"
 
 	COUNTER_DEPENDENCIES=0
 	COUNTER_MISSING=0
@@ -821,24 +831,24 @@ _check_dependencies()
 
 _install_dependencies()
 {
-	echo -e "$_DEPENDENCIES_NOT_INSTALLED"
+	echo -e "${_DEPENDENCIES_NOT_INSTALLED[$LANGUAGE]}"
 	echo -e "\n	\e[33;1m$MISSING_DEPENDENCIES\e[m\n"
-	echo "$_ASK_INSTALL_DEPENDECIES"
-	echo "$_PRESS_ENTER_TO_CONTINUE_OR_CANCEL"
+	echo "${_ASK_INSTALL_DEPENDECIES[$LANGUAGE]}"
+	echo "${_PRESS_ENTER_TO_CONTINUE_OR_CANCEL[$LANGUAGE]}"
 
 	read a
 
-	echo -e "$_UPDATE_APT_GET\n"
+	echo -e "${_UPDATE_APT_GET[$LANGUAGE]}\n"
 
 	sudo apt-get update
 
-	echo -e "\n$_INSTALL_DEPENDENCIES\n"
+	echo -e "\n${_INSTALL_DEPENDENCIES[$LANGUAGE]}\n"
 
 	sudo apt-get install --no-install-recommends -y $MISSING_DEPENDENCIES
 	sudo apt-get install dialog -y # Need fix here
 
 	echo
-	print info "$_PRESS_ENTER_TO_CONTINUE"
+	print info "${_PRESS_ENTER_TO_CONTINUE[$LANGUAGE]}"
 	read a
 }
 
@@ -852,7 +862,7 @@ _scan_dependencies()
 		_check_dependencies "$1"
 	done
 	
-	print ok "$_ALL_DEPENDENCIES_INSTALLED" 
+	print ok "${_ALL_DEPENDENCIES_INSTALLED[$LANGUAGE]}" 
 }
 
 # Detect native CFLAGS from HOST CPU.
@@ -886,8 +896,8 @@ _detect_cflags()
 
 _preset_cflags_intel_64()
 {
-	SELECT=`dialog --stdout --title "$DEFAULT_TITLE" --menu "$_X86_64_TITLE" 20 70 40 \
-	"x86_64_generic" 	  	 "$_X86_64_CFLAGS" \
+	SELECT=`dialog --stdout --title "$DEFAULT_TITLE" --menu "${_X86_64_TITLE[$LANGUAGE]}" 20 70 40 \
+	"x86_64_generic" 	  	 "${_X86_64_CFLAGS[$LANGUAGE]}" \
 	"x86_64_old_gen"		 "Old Intel 64 (Celeron/Pentium)" \
 	"x86_64_old_gen_Core"	 "Old Intel Core 64 (Duo/Solo)" \
 	"x86_64_1st_gen_Pentium"  "1st gen Celeron/Pentium Nehalem" \
@@ -918,7 +928,7 @@ _preset_cflags_intel_64()
 
 _preset_cflags_amd_64()
 {
-	TEST=`dialog --stdout --title "$DEFAULT_TITLE" --menu "$_DEFAULT_CFLAGS_TEXT AMD AMD64 arch:" 20 80 40 \
+	TEST=`dialog --stdout --title "$DEFAULT_TITLE" --menu "${_DEFAULT_CFLAGS_TEXT[$LANGUAGE]} AMD AMD64 arch:" 20 80 40 \
 	"AMD_K8_Core" "AMD K8 Sempron/Athlon/Phenom/Opteron" \
 	"AMD_K10_Core" "AMD K10 Sempron II/Athlon II/Phenom II/Opteron II" \
 	"AMD_Bulldozer_Core" "AMD Bulldozer" \
@@ -929,37 +939,37 @@ _preset_cflags_amd_64()
 
 _preset_cflags_ppc_64()
 {
-	TEST=`dialog --stdout --title "$DEFAULT_TITLE" --menu "$_DEFAULT_CFLAGS_TEXT PowerPC 64 arch:" 15 60 40 \
+	TEST=`dialog --stdout --title "$DEFAULT_TITLE" --menu "${_DEFAULT_CFLAGS_TEXT[$LANGUAGE]} PowerPC 64 arch:" 15 60 40 \
 	"ppc64_generic" "Generic PowerPC64 CFLAGS" \
 	"ppc64_cell"	 "PlayStation 3 - Cell Broadband Engine" `
 }
 
 _select_arch()
 {
-	_PROJECT_VAR_ARCH_TMP="$_PROJECT_VAR_ARCH"
-	_PROJECT_VAR_ARCH_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "$_SELECT_TARGET_ARCH $HOST_ARCH." 0 75 0 \
-	"i386"	"Intel/AMD/VIA 32 bits ($_OLD_X86)" \
-	"i686"	"Intel/AMD/VIA 32 bits ($_NEWER_X86)" \
-	"x86_64"	"Intel/AMD/VIA 64 bits ($_ALSO_AMD64)" \
+	_PROJECT_VAR_ARCH_TMP="${_PROJECT_VAR_ARCH[$LANGUAGE]}"
+	_PROJECT_VAR_ARCH_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "${_SELECT_TARGET_ARCH[$LANGUAGE]} $HOST_ARCH." 0 75 0 \
+	"i386"	"Intel/AMD/VIA 32 bits (${_OLD_X86[$LANGUAGE]})" \
+	"i686"	"Intel/AMD/VIA 32 bits (${_NEWER_X86[$LANGUAGE]})" \
+	"x86_64"	"Intel/AMD/VIA 64 bits (${_ALSO_AMD64[$LANGUAGE]})" \
 	"ia64"	"Intel Itanium 64 bits" \
 	"arm"	"ARM 32 bits" \
 	"arm64"	"ARM 64 bits" \
 	"ppc"	"IBM/Motorola PowerPC 32 bits" \
 	"ppc64"	"IBM/Sony PowerPC 64 bits" `
 
-	if [ "x$_PROJECT_VAR_ARCH_TMP" != "x" ]
+	if [ "x${_PROJECT_VAR_ARCH_TMP[$LANGUAGE]}" != "x" ]
 	then
-		_PROJECT_VAR_ARCH="$_PROJECT_VAR_ARCH_TMP"
+		_PROJECT_VAR_ARCH="${_PROJECT_VAR_ARCH_TMP[$LANGUAGE]}"
 	fi
 
-	case "$_PROJECT_VAR_ARCH_TMP" in
+	case "${_PROJECT_VAR_ARCH_TMP[$LANGUAGE]}" in
 
 		"i386")
-			dialog --title "$DEFAULT_TITLE" --msgbox "\n$_I386_SUPPORT_WARN" 17 75 ;;
+			dialog --title "$DEFAULT_TITLE" --msgbox "\n${_I386_SUPPORT_WARN[$LANGUAGE]}" 17 75 ;;
 		"ia64")
-			dialog --title "$DEFAULT_TITLE" --msgbox "\n$_IA64_SUPPORT_WARN" 12 75 ;;
+			dialog --title "$DEFAULT_TITLE" --msgbox "\n${_IA64_SUPPORT_WARN[$LANGUAGE]}" 12 75 ;;
 		"ppc64")
-			dialog --title "$DEFAULT_TITLE" --msgbox "\n$_CELL_PS3_INFO" 14 75 ;;
+			dialog --title "$DEFAULT_TITLE" --msgbox "\n${_CELL_PS3_INFO[$LANGUAGE]}" 14 75 ;;
 	esac
 }
 
@@ -996,7 +1006,7 @@ _save_project()
 	then
 		if [ -f "$PROJECT_DIR/$_PROJECT_VAR_NAME.kfn" ]
 		then
-			dialog --title "$DEFAULT_TITLE" --yesno "\n$_OVERRIDE_FILE\n\n$PROJECT_DIR/$_PROJECT_VAR_NAME.kfn?" 9 75
+			dialog --title "$DEFAULT_TITLE" --yesno "\n${_OVERRIDE_FILE[$LANGUAGE]}\n\n$PROJECT_DIR/$_PROJECT_VAR_NAME.kfn?" 9 75
 
 			if [ "$?" == 0 ]
 			then
@@ -1006,7 +1016,7 @@ _save_project()
 			_save_project_to_file
 		fi
 	else
-		dialog --title "$DEFAULT_TITLE" --msgbox "\n$_TITLE_CANNOT_BE_EMPTY" 7 50
+		dialog --title "$DEFAULT_TITLE" --msgbox "\n${_TITLE_CANNOT_BE_EMPTY[$LANGUAGE]}" 7 50
 	fi
 }
 
@@ -1030,7 +1040,7 @@ _set_threads()
 
 	while [ $THREAD_EXIT == 0 ]
 	do
-		_PROJECT_VAR_THREADS_TMP=$( dialog --stdout --title "$DEFAULT_TITLE" --inputbox "\n$_SELECT_NUMBER_OF_THREADS $CPU_THREADS threads.\n " 13 55 "$_PROJECT_VAR_THREADS" )
+		_PROJECT_VAR_THREADS_TMP=$( dialog --stdout --title "$DEFAULT_TITLE" --inputbox "\n${_SELECT_NUMBER_OF_THREADS[$LANGUAGE]} $CPU_THREADS threads.\n " 13 55 "${_PROJECT_VAR_THREADS[$LANGUAGE]}" )
 
 		if [ $_PROJECT_VAR_THREADS_TMP -lt 0 ]
 		then
@@ -1040,9 +1050,9 @@ _set_threads()
 		case "x$_PROJECT_VAR_THREADS_TMP" in
 
 			"x")
-				dialog --title "$DEFAULT_TITLE" --msgbox "\n$_THREADS_CANNOT_BE_EMPTY" 7 50 ;;
+				dialog --title "$DEFAULT_TITLE" --msgbox "\n${_THREADS_CANNOT_BE_EMPTY[$LANGUAGE]}" 7 50 ;;
 			"x0")
-				dialog --title "$DEFAULT_TITLE" --msgbox "\n$_THREADS_CANNOT_BE_ZERO" 9 60 ;;
+				dialog --title "$DEFAULT_TITLE" --msgbox "\n${_THREADS_CANNOT_BE_ZERO[$LANGUAGE]}" 9 60 ;;
 			*)
 				_PROJECT_VAR_THREADS="$_PROJECT_VAR_THREADS_TMP"
 				THREAD_EXIT=1
@@ -1058,7 +1068,7 @@ _set_project_name()
 
 	while [ $NAME_EXIT == 0 ]
 	do
-		_PROJECT_VAR_NAME_TMP=$( dialog --stdout --title "$DEFAULT_TITLE" --inputbox "\n$_SET_PROJECT_NAME" 10 55 "$_PROJECT_VAR_NAME" )
+		_PROJECT_VAR_NAME_TMP=$( dialog --stdout --title "$DEFAULT_TITLE" --inputbox "\n${_SET_PROJECT_NAME[$LANGUAGE]}" 10 55 "$_PROJECT_VAR_NAME" )
 
 		COUNTER=0
 
@@ -1069,14 +1079,14 @@ _set_project_name()
 			COUNTER=$(($COUNTER+1))
 		done
 
-		_PROJECT_VAR_NAME_TMP=${_PROJECT_VAR_NAME_TMP//'*'/}
-		_PROJECT_VAR_NAME_TMP=${_PROJECT_VAR_NAME_TMP//'\'/}
-		_PROJECT_VAR_NAME_TMP=${_PROJECT_VAR_NAME_TMP//'/'/}
-		_PROJECT_VAR_NAME_TMP=${_PROJECT_VAR_NAME_TMP//'|'/}
+		_PROJECT_VAR_NAME_TMP=$_PROJECT_VAR_NAME_TMP//'*'/}
+		_PROJECT_VAR_NAME_TMP=$_PROJECT_VAR_NAME_TMP//'\'/}
+		_PROJECT_VAR_NAME_TMP=$_PROJECT_VAR_NAME_TMP//'/'/}
+		_PROJECT_VAR_NAME_TMP=$_PROJECT_VAR_NAME_TMP//'|'/}
 
 		if [ "x$_PROJECT_VAR_NAME_TMP" == "x" ]
 		then
-			dialog --title "$DEFAULT_TITLE" --msgbox "\n$_TITLE_CANNOT_BE_EMPTY" 7 50
+			dialog --title "$DEFAULT_TITLE" --msgbox "\n${_TITLE_CANNOT_BE_EMPTY[$LANGUAGE]}" 7 50
 		else
 			_PROJECT_VAR_NAME="$_PROJECT_VAR_NAME_TMP"
 			NAME_EXIT=1
@@ -1092,25 +1102,25 @@ _set_project_prefix()
 
 	while [ $PREFIX_EXIT == 0 ]
 	do
-		_PROJECT_VAR_PREFIX_TMP=$( dialog --stdout --title "$DEFAULT_TITLE" --inputbox "\n$_SET_PROJECT_PREFIX\n " 15 70 "$_PROJECT_VAR_PREFIX" )
+		_PROJECT_VAR_PREFIX_TMP=$( dialog --stdout --title "$DEFAULT_TITLE" --inputbox "\n${_SET_PROJECT_PREFIX[$LANGUAGE]}\n " 15 70 "$_PROJECT_VAR_PREFIX" )
 
 		COUNTER=0
 
 		while [ "x${BANNED_CHARS[$COUNTER]}" != "x" ]
 		do
 			BAN_CHAR="${BANNED_CHARS[$COUNTER]}"
-			_PROJECT_VAR_PREFIX_TMP=`echo "$_PROJECT_VAR_PREFIX_TMP" | tr --delete "$BAN_CHAR"`
+			_PROJECT_VAR_PREFIX_TMP=`echo "${PROJECT_VAR_PREFIX_TMP" | tr --delete "$BAN_CHAR"`
 			COUNTER=$(($COUNTER+1))
 		done
 
-		_PROJECT_VAR_PREFIX_TMP=${_PROJECT_VAR_PREFIX_TMP//'*'/}
-		_PROJECT_VAR_PREFIX_TMP=${_PROJECT_VAR_PREFIX_TMP//'\'/}
-		_PROJECT_VAR_PREFIX_TMP=${_PROJECT_VAR_PREFIX_TMP//'/'/}
-		_PROJECT_VAR_PREFIX_TMP=${_PROJECT_VAR_PREFIX_TMP//'|'/}
+		_PROJECT_VAR_PREFIX_TMP=$_PROJECT_VAR_PREFIX_TMP//'*'/}
+		_PROJECT_VAR_PREFIX_TMP=$_PROJECT_VAR_PREFIX_TMP//'\'/}
+		_PROJECT_VAR_PREFIX_TMP=$_PROJECT_VAR_PREFIX_TMP//'/'/}
+		_PROJECT_VAR_PREFIX_TMP=$_PROJECT_VAR_PREFIX_TMP//'|'/}
 
 		if [ "x$_PROJECT_VAR_PREFIX_TMP" == "x" ]
 		then
-			dialog --title "$DEFAULT_TITLE" --msgbox "\n$_PREFIX_CANNOT_BE_EMPTY" 7 50
+			dialog --title "$DEFAULT_TITLE" --msgbox "\n${_PREFIX_CANNOT_BE_EMPTY[$LANGUAGE]}" 7 50
 		else
 			_PROJECT_VAR_PREFIX="$_PROJECT_VAR_PREFIX_TMP"
 			PREFIX_EXIT=1
@@ -1121,9 +1131,9 @@ _set_project_prefix()
 _select_config_mode()
 {
 	CONFIG_MODE_TMP="$_PROJECT_VAR_SETUP"
-	CONFIG_MODE_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "\n$_SELECT_CONFIG_MODE" 9 55 0 \
-	"$_MENUCONFIG" "$_TEXT_MODE" \
-	"$_XCONFIG" "$_GRAFICAL_MODE" `
+	CONFIG_MODE_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "\n${_SELECT_CONFIG_MODE[$LANGUAGE]}" 9 55 0 \
+	"${_MENUCONFIG[$LANGUAGE]}" "${_TEXT_MODE[$LANGUAGE]}" \
+	"${_XCONFIG[$LANGUAGE]}" "${_GRAFICAL_MODE[$LANGUAGE]}" `
 
 	if [ "x$CONFIG_MODE_TMP" != "x" ]
 	then
@@ -1134,15 +1144,15 @@ _select_config_mode()
 _select_prefix_mode()
 {
 	CONFIG_PREFIX_TMP="$_PROJECT_VAR_PREFIX_MODE"
-	CONFIG_PREFIX_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "\n$_CUSTOM_PREFIX_TXT\n " 11 70 0 \
-	"$_CUSTOM_PREFIX_OFF" "$_CUSTOM_PREFIX_OFF_TXT" \
-	"$_CUSTOM_PREFIX_ON" "$_CUSTOM_PREFIX_ON_TXT" `
+	CONFIG_PREFIX_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "\n${_CUSTOM_PREFIX_TXT[$LANGUAGE]}\n " 11 70 0 \
+	"${_CUSTOM_PREFIX_OFF[$LANGUAGE]}" "${_CUSTOM_PREFIX_OFF_TXT[$LANGUAGE]}" \
+	"${_CUSTOM_PREFIX_ON[$LANGUAGE]}" "${_CUSTOM_PREFIX_ON_TXT[$LANGUAGE]}" `
 
 	if [ "x$CONFIG_PREFIX_TMP" != "x" ]
 	then
 		_PROJECT_VAR_PREFIX_MODE="$CONFIG_PREFIX_TMP"
 
-		if [ "$CONFIG_PREFIX_TMP" == "$_CUSTOM_PREFIX_ON" ]
+		if [ "$CONFIG_PREFIX_TMP" == "${_CUSTOM_PREFIX_ON[$LANGUAGE]}" ]
 		then
 			_set_project_prefix
 		fi
@@ -1152,9 +1162,9 @@ _select_prefix_mode()
 _main_menu()
 {
 	CONFIG_MODE_TMP="$_PROJECT_VAR_SETUP"
-	CONFIG_MODE_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "$_SELECT_CONFIG_MODE" 7 45 0 \
-	"$_ABOUT_KFN" "$_TEXT_MODE" \
-	"$_ABOUT_KFN" "$_ABOUT_KFN_MSG" `
+	CONFIG_MODE_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "${_SELECT_CONFIG_MODE[$LANGUAGE]}" 7 45 0 \
+	"${_ABOUT_KFN[$LANGUAGE]}" "${_TEXT_MODE[$LANGUAGE]}" \
+	"${_ABOUT_KFN[$LANGUAGE]}" "${_ABOUT_KFN_MSG[$LANGUAGE]}" `
 
 	if [ "x$CONFIG_MODE_TMP" != "x" ]
 	then
@@ -1183,7 +1193,7 @@ _gen_location_name()
 
 _location_build_info()
 {
-	dialog --title "$DEFAULT_TITLE" --msgbox "\n$_PROJECT_LOCATION_TXT\n\n$BUILD_DIR/$LOCATION_NAME/" 9 65
+	dialog --title "$DEFAULT_TITLE" --msgbox "\n${_PROJECT_LOCATION_TXT[$LANGUAGE]}\n\n$BUILD_DIR/$LOCATION_NAME/" 9 65
 }
 
 _extract_project()
@@ -1197,7 +1207,7 @@ _extract_project()
 
 	if [ "$CHECK_EMPTY_FOLDER" != 0 ]
 	then
-		dialog --title "$DEFAULT_TITLE" --yesno "\n$_FOLDER_IS_NOT_EMPTY\n\n$PROJECT_LOCATION_FILES\n\n$_CONTINUE_TO_EMPTY_DIR" 12 75
+		dialog --title "$DEFAULT_TITLE" --yesno "\n${_FOLDER_IS_NOT_EMPTY[$LANGUAGE]}\n\n$PROJECT_LOCATION_FILES\n\n${_CONTINUE_TO_EMPTY_DIR[$LANGUAGE]}" 12 75
 		if [ "$?" == 0 ]
 		then
 			title
@@ -1224,10 +1234,10 @@ _clean_files()
 {
 	if [ ! -d "$PROJECT_LOCATION_FILES" ]
 	then
-		dialog --title "$DEFAULT_TITLE" --msgbox "\n$_PROJECT_FOLDER_EMPTY_ERROR" 9 70
+		dialog --title "$DEFAULT_TITLE" --msgbox "\n${_PROJECT_FOLDER_EMPTY_ERROR[$LANGUAGE]}" 9 70
 	else
 		title
-		print info "$_CLEAN_MAKE_FILES\n"
+		print info "${_CLEAN_MAKE_FILES[$LANGUAGE]}\n"
 		ACTUAL_DIR="`pwd`"
 		cd "$PROJECT_LOCATION_FILES/kernel/"
 		make clean
@@ -1239,12 +1249,12 @@ _start_build()
 {
 	if [ ! -f "$PROJECT_LOCATION_FILES/kernel/.config" ]
 	then
-		dialog --title "$DEFAULT_TITLE" --msgbox "\n$_CONFIG_NOT_FOUND" 8 75
+		dialog --title "$DEFAULT_TITLE" --msgbox "\n${_CONFIG_NOT_FOUND[$LANGUAGE]}" 8 75
 	else
 		title
-		print info "$_START_BUILD $_PROJECT_VAR_ARCH$CROSS_COMPILATION_INFO"
-		print info "$_COMPILER: $_PROJECT_VAR_COMPILER ($COMPILER_NAME)"
-		print info "$_KERNEL_VERSION: $_PROJECT_VAR_KVERSION"
+		print info "${_TART_BUILD[$LANGUAGE]} ${_PROJECT_VAR_ARCH$CROSS_COMPILATION_INFO[$LANGUAGE]}"
+		print info "${_COMPILER[$LANGUAGE]}: ${_PROJECT_VAR_COMPILER[$LANGUAGE]} ($COMPILER_NAME)"
+		print info "${_KERNEL_VERSION[$LANGUAGE]}: $_PROJECT_VAR_KVERSION"
 		print info "Using CPU CFLAGS: Yes"
 		echo
 
@@ -1256,7 +1266,7 @@ _start_build()
 
 		cd "$PROJECT_LOCATION_FILES/kernel/"
 
-		if [ "$_PROJECT_VAR_PREFIX_MODE" == "$_CUSTOM_PREFIX_ON" ]
+		if [ "$_PROJECT_VAR_PREFIX_MODE" == "${_CUSTOM_PREFIX_ON[$LANGUAGE]}" ]
 		then
 			PROJECT_PREFIX="--append-to-version=-$_PROJECT_VAR_PREFIX"
 		else
@@ -1320,13 +1330,13 @@ _start_build()
 			# Very incomplete list:
 
 			case "$STATUS" in
-				"2")   print error "$_EXIT_BY_ERROR $STATUS: $_NO_SPACE_IN_DISK" ;;
-				"130") print error "$_EXIT_BY_ERROR $STATUS: $_CANCELLED_BY_USER" ;;
-				"255") print error "$_EXIT_BY_ERROR $STATUS: $_CANCELLED_BY_USER" ;;
-				*)     print error "$_EXIT_BY_ERROR $STATUS: $_UNKNOWN" ;;
+				"2")   print error "${_EXIT_BY_ERROR $STATUS[$LANGUAGE]}: ${_NO_SPACE_IN_DISK[$LANGUAGE]}" ;;
+				"130") print error "${_EXIT_BY_ERROR $STATUS[$LANGUAGE]}: ${_CANCELLED_BY_USER[$LANGUAGE]}" ;;
+				"255") print error "${_EXIT_BY_ERROR $STATUS[$LANGUAGE]}: ${_CANCELLED_BY_USER[$LANGUAGE]}" ;;
+				*)     print error "${_EXIT_BY_ERROR $STATUS[$LANGUAGE]}: ${_UNKNOWN[$LANGUAGE]}" ;;
 			esac
 
-			print info "$_PRESS_ANY_KEY_TO_CONTINUE"
+			print info "${_PRESS_ANY_KEY_TO_CONTINUE[$LANGUAGE]}"
 			read a
 		else
 			mkdir -p "$PROJECT_LOCATION_FILES/packages/$_PROJECT_VAR_ARCH/"
@@ -1341,11 +1351,12 @@ _start_build()
 
 			if [ ! -f "$PROJECT_LOCATION_FILES/packages/$_PROJECT_VAR_ARCH/linux-image-$_PROJECT_VAR_KVERSION-$_PROJECT_VAR_ARCH.deb" ]
 			then
-				print error "$_EXIT_BY_ERROR $STATUS: $_UNKNOWN"
+				print error "${_EXIT_BY_ERROR[$LANGUAGE]} $STATUS: ${_UNKNOWN[$LANGUAGE]}"
 			else
-				print info "$_COMPILATION_COMPLETED_SUCESSFULLY $STATUS"
+				print info "${_COMPILATION_COMPLETED_SUCESSFULLY[$LANGUAGE]} $STATUS"
 			fi
-			print info "$_PRESS_ANY_KEY_TO_CONTINUE"
+
+			print info "${_PRESS_ANY_KEY_TO_CONTINUE[$LANGUAGE]}"
 			read a
 		fi
 
@@ -1357,7 +1368,7 @@ _manage_config_file()
 {
 	if [ ! -f "$PROJECT_LOCATION_FILES/kernel/Makefile" ]
 	then
-		dialog --title "$DEFAULT_TITLE" --msgbox "\n$_PROJECT_FOLDER_EMPTY_ERROR" 9 70
+		dialog --title "$DEFAULT_TITLE" --msgbox "\n${_PROJECT_FOLDER_EMPTY_ERROR[$LANGUAGE]}" 9 70
 	else
 		title
 
@@ -1367,16 +1378,16 @@ _manage_config_file()
 
 		if [ "$CROSS_CC" == 0 ]
 		then
-			print info "$_KERNEL_SETUP_UTILITY\n"
+			print info "${_KERNEL_SETUP_UTILITY[$LANGUAGE]}\n"
 
-			if [ "$_PROJECT_VAR_SETUP" == "$_MENUCONFIG" ]
+			if [ "${_PROJECT_VAR_SETUP[$LANGUAGE]}" == "${_MENUCONFIG[$LANGUAGE]}" ]
 			then
 				make menuconfig
 			else
 				make xconfig
 			fi
 		else
-			print info "$_KERNEL_SETUP_UTILITY ($_PROJECT_VAR_ARCH)\n"
+			print info "${_KERNEL_SETUP_UTILITY[$LANGUAGE]} ($_PROJECT_VAR_ARCH)\n"
 
 			if [ "$_PROJECT_VAR_SETUP" == "$_MENUCONFIG" ]
 			then
@@ -1398,17 +1409,17 @@ _manage_config_file()
 
 		if [ ! -f "$PROJECT_LOCATION_FILES/kernel/.config" ]
 		then
-			dialog --title "$DEFAULT_TITLE" --msgbox "\n$_CONFIG_NOT_FOUND" 8 75
+			dialog --title "$DEFAULT_TITLE" --msgbox "\n${_CONFIG_NOT_FOUND[$LANGUAGE]}" 8 75
 		fi
 	fi
 }
 
 _gen_kernel_version()
 {
-	_PROJECT_VAR_KVERSION_NEW=( ${_PROJECT_VAR_KVERSION//"."/" "} )
+	_PROJECT_VAR_KVERSION_NEW=( $_PROJECT_VAR_KVERSION//"."/" "} )
 
-	KERNEL_VERSION="${_PROJECT_VAR_KVERSION_NEW[0]}"
-	KERNEL_SUBVERSION="${_PROJECT_VAR_KVERSION_NEW[1]}"
+	KERNEL_VERSION="$_PROJECT_VAR_KVERSION_NEW[0]}"
+	KERNEL_SUBVERSION="$_PROJECT_VAR_KVERSION_NEW[1]}"
 
 	if [ "${_PROJECT_VAR_KVERSION_NEW[2]}" == 0 ]
 	then
@@ -1420,7 +1431,7 @@ _gen_kernel_version()
 		KERNEL_REVISION=0
 		KERNEL_VERSION_NUMBER="$KERNEL_VERSION.$KERNEL_SUBVERSION"
 	else
-		KERNEL_REVISION="${_PROJECT_VAR_KVERSION_NEW[2]}"
+		KERNEL_REVISION="$_PROJECT_VAR_KVERSION_NEW[2]}"
 		KERNEL_VERSION_NUMBER="$KERNEL_VERSION.$KERNEL_SUBVERSION.$KERNEL_REVISION"
 	fi
 }
@@ -1437,15 +1448,15 @@ _download_package()
 
 _compiler_mode()
 {
-	COMPILER_MODE_TMP="$_COMPILER_TXT"
+	COMPILER_MODE_TMP="${_COMPILER_TXT[$LANGUAGE]}"
 	MODE="$1"
 
 	if [ "$MODE" == 0 ]
 	then
-		COMPILER_MODE_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "\n$_COMPILER_TXT $_PROJECT_VAR_ARCH:" 9 60 0 \
+		COMPILER_MODE_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "\n${_COMPILER_TXT[$LANGUAGE]} $_PROJECT_VAR_ARCH:" 9 60 0 \
 		"gcc" "$_GCC" `
 	else
-		COMPILER_MODE_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "\n$_COMPILER_TXT $_PROJECT_VAR_ARCH:" 9 60 0 \
+		COMPILER_MODE_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "\n${_COMPILER_TXT[$LANGUAGE]} $_PROJECT_VAR_ARCH:" 9 60 0 \
 		"gcc"  "$_GCC" \
 		"llvm" "$_LLVM (TODO)" `
 	fi
@@ -1484,7 +1495,7 @@ _check_compiler()
 _exit()
 {	
 	echo -e "\n"
-	print info "$_SEE_YOU_SOON\n"
+	print info "${_SEE_YOU_SOON[$LANGUAGE]}\n"
 	exit
 }
 
@@ -1493,7 +1504,7 @@ _get_kernel_version()
 
 	_SELECT_KERNEL_VERSION="Selecione a versao do Kernel a ser compilada.\nVoce pode verificar a versao mais recente em Kernel.org."
 
-	_PROJECT_VAR_KVERSION=$( dialog --stdout --title "$DEFAULT_TITLE" --inputbox "\n$_SELECT_KERNEL_VERSION\n " 13 60 "$_PROJECT_VAR_KVERSION" )
+	_PROJECT_VAR_KVERSION=$( dialog --stdout --title "$DEFAULT_TITLE" --inputbox "\n${_SELECT_KERNEL_VERSION[$LANGUAGE]}\n " 13 60 "$_PROJECT_VAR_KVERSION" )
 
 	_gen_kernel_version
 }
@@ -1524,7 +1535,7 @@ _main_setup()
 		_gen_location_name
 		_check_compiler
 
-		if [ "$_PROJECT_VAR_PREFIX_MODE" == "$_CUSTOM_PREFIX_ON" ]
+		if [ "$_PROJECT_VAR_PREFIX_MODE" == "${_CUSTOM_PREFIX_ON[$LANGUAGE]}" ]
 		then
 			PREFIX_OUTPUT=" ("'"'"Linux $_PROJECT_VAR_KVERSION-$_PROJECT_VAR_PREFIX"'"'")"
 		else
@@ -1553,68 +1564,68 @@ _main_setup()
 		export CXXFLAGS="$CFLAGS"
 
 		SELECT_SETUP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "$_PROJECT_TITLE $_PROJECT_VAR_NAME" 26 0 40 \
-		"$_PROJECT_NAME" "$_PROJECT_VAR_NAME" \
-		"$_PROJECT_KERNEL" "$_PROJECT_VAR_KVERSION" \
-		"$_PROJECT_ARCH" "$_PROJECT_VAR_ARCH$CROSS_COMPILATION_INFO" \
-		"$_PROJECT_OPTM" "$_PROJECT_VAR_OPTIMIZATION" \
-		"$_COMPILER" "$_PROJECT_VAR_COMPILER ($COMPILER_NAME)" \
-		"$_PROJECT_PREFIX" "$_PROJECT_VAR_PREFIX_MODE$PREFIX_OUTPUT" \
-		"$_PROJECT_THREADS" "$_PROJECT_VAR_THREADS $_THREADS" \
-		"$_PROJECT_CONFIGURATION" "$_PROJECT_VAR_SETUP" \
+		"${_PROJECT_NAME[$LANGUAGE]}" "$_PROJECT_VAR_NAME" \
+		"${_PROJECT_KERNEL[$LANGUAGE]}" "$_PROJECT_VAR_KVERSION" \
+		"${_PROJECT_ARCH[$LANGUAGE]}" "$_PROJECT_VAR_ARCH$CROSS_COMPILATION_INFO" \
+		"${_PROJECT_OPTM[$LANGUAGE]}" "$_PROJECT_VAR_OPTIMIZATION" \
+		"${_COMPILER[$LANGUAGE]}" "$_PROJECT_VAR_COMPILER ($COMPILER_NAME)" \
+		"${_PROJECT_PREFIX[$LANGUAGE]}" "$_PROJECT_VAR_PREFIX_MODE$PREFIX_OUTPUT" \
+		"${_PROJECT_THREADS[$LANGUAGE]}" "$_PROJECT_VAR_THREADS ${_THREADS[$LANGUAGE]}" \
+		"${_PROJECT_CONFIGURATION[$LANGUAGE]}" "$_PROJECT_VAR_SETUP" \
 		"" "" \
-		"$_PROJECT_LOCATION_BUILD" "$BUILD_DIR/$LOCATION_NAME/" \
-		"$_PROJECT_SAVE" "$_PROJECT_SAVE_CHANGES" \
+		"${_PROJECT_LOCATION_BUILD[$LANGUAGE]}" "$BUILD_DIR/$LOCATION_NAME[$LANGUAGE]}/" \
+		"${_PROJECT_SAVE[$LANGUAGE]}" "${_PROJECT_SAVE_CHANGES[$LANGUAGE]}" \
 		"" "" \
-		"$_DOWNLOAD_KERNEL_FILES" "$_DOWNLOAD_KERNEL_FILES_TXT" \
-		"$_EXTRACT_KERNEL_FILES" "$_CREATE_LOCAL_FILES" \
-		"$_CLEAN_TEMPORARY_FILES" "$_CLEAN_TEMPORARY_FILES_TXT" \
-		"$_GENERATE_CONFIG_FILE" "$_GENERATE_CONFIG_FILE_TXT" \
-		"$_PROJECT_START_BUILD" "$_PROJECT_START_BUILD_TXT" \
+		"${_DOWNLOAD_KERNEL_FILES[$LANGUAGE]}" "${_DOWNLOAD_KERNEL_FILES_TXT[$LANGUAGE]}" \
+		"${_EXTRACT_KERNEL_FILES[$LANGUAGE]}" "${_CREATE_LOCAL_FILES[$LANGUAGE]}" \
+		"${_CLEAN_TEMPORARY_FILES[$LANGUAGE]}" "${_CLEAN_TEMPORARY_FILES_TXT[$LANGUAGE]}" \
+		"${_GENERATE_CONFIG_FILE[$LANGUAGE]}" "${_GENERATE_CONFIG_FILE_TXT[$LANGUAGE]}" \
+		"${_PROJECT_START_BUILD[$LANGUAGE]}" "${_PROJECT_START_BUILD_TXT[$LANGUAGE]}" \
 		"" "" \
 		"6. Sair" "Cancela as alteracoes e sai do KFN." `
 
 		case "$SELECT_SETUP" in
 
-			"$_PROJECT_KERNEL")
+			"${_PROJECT_KERNEL[$LANGUAGE]}")
 				_get_kernel_version ;;
 
-			"$_DOWNLOAD_KERNEL_FILES")
+			"${_DOWNLOAD_KERNEL_FILES[$LANGUAGE]}")
 				_download_package ;;
 
-			"$_PROJECT_START_BUILD")
+			"${_PROJECT_START_BUILD[$LANGUAGE]}")
 				_start_build ;;
 
-			"$_CLEAN_TEMPORARY_FILES")
+			"${_CLEAN_TEMPORARY_FILES[$LANGUAGE]}")
 				_clean_files ;;
 
-			"$_EXTRACT_KERNEL_FILES")
+			"${_EXTRACT_KERNEL_FILES[$LANGUAGE]}")
 				_extract_project ;;
 
-			"$_PROJECT_PREFIX")
+			"${_PROJECT_PREFIX[$LANGUAGE]}")
 				_select_prefix_mode ;;
 
-			"$_PROJECT_NAME")
+			"${_PROJECT_NAME[$LANGUAGE]}")
 				_set_project_name ;;
 
-			"$_PROJECT_THREADS")
+			"${_PROJECT_THREADS[$LANGUAGE]}")
 				_set_threads ;;
 
-			"$_PROJECT_ARCH")
+			"${_PROJECT_ARCH[$LANGUAGE]}")
 				_select_arch ;;
 
-			"$_PROJECT_SAVE")
+			"${_PROJECT_SAVE[$LANGUAGE]}")
 				_save_project ;;
 
-			"$_COMPILER")
+			"${_COMPILER[$LANGUAGE]}")
 				_select_compiler ;;
 
-			"$_PROJECT_CONFIGURATION")
+			"${_PROJECT_CONFIGURATION[$LANGUAGE]}")
 				_select_config_mode ;;
 
-			"$_GENERATE_CONFIG_FILE")
+			"${_GENERATE_CONFIG_FILE[$LANGUAGE]}")
 				_manage_config_file ;;
 
-			"$_PROJECT_LOCATION_BUILD")
+			"${_PROJECT_LOCATION_BUILD[$LANGUAGE]}")
 				_location_build_info ;;
 
 			"6. Sair")
@@ -1649,19 +1660,13 @@ _run()
 	_detect_cflags
 
 	_vm_checker
-	echo -e "\e[32;1m\n $_ALL_READY\e[m"
+	echo -e "\e[32;1m\n ${_ALL_READY[$LANGUAGE]}\e[m"
 	read a
 
 	_main_setup new
 }
 
 _run
-
-
-
-
-
-
 
 
 
