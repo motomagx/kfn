@@ -7,7 +7,7 @@ TITLE="Kernel for Newbies"
 MAIN_TITLE="The multi-arch kernel compiler tool"
 VERSION=3.0-alpha2+virt
 FILE_FORMAT_VERSION=1
-DEFAULT_KERNEL="5.7.2"
+DEFAULT_KERNEL="5.7.7"
 BASE_URL="https://cdn.kernel.org/pub/linux/kernel"
 
 BANNED_CHARS=( ':' ';' '@' '.' '"' "'" '?' '!' '#' '$' '%' '[' ']' '{' '}' '&' '<' '>' '=' ',' '`' )
@@ -946,7 +946,7 @@ _preset_cflags_ppc_64()
 
 _select_arch()
 {
-	_PROJECT_VAR_ARCH_TMP="${_PROJECT_VAR_ARCH[$LANGUAGE]}"
+	_PROJECT_VAR_ARCH_TMP="_PROJECT_VAR_ARCH"
 	_PROJECT_VAR_ARCH_TMP=`dialog --stdout --title "$DEFAULT_TITLE" --menu "${_SELECT_TARGET_ARCH[$LANGUAGE]} $HOST_ARCH." 0 75 0 \
 	"i386"	"Intel/AMD/VIA 32 bits (${_OLD_X86[$LANGUAGE]})" \
 	"i686"	"Intel/AMD/VIA 32 bits (${_NEWER_X86[$LANGUAGE]})" \
@@ -957,12 +957,12 @@ _select_arch()
 	"ppc"	"IBM/Motorola PowerPC 32 bits" \
 	"ppc64"	"IBM/Sony PowerPC 64 bits" `
 
-	if [ "x${_PROJECT_VAR_ARCH_TMP[$LANGUAGE]}" != "x" ]
+	if [ "x$_PROJECT_VAR_ARCH_TMP" != "x" ]
 	then
-		_PROJECT_VAR_ARCH="${_PROJECT_VAR_ARCH_TMP[$LANGUAGE]}"
+		_PROJECT_VAR_ARCH="$_PROJECT_VAR_ARCH_TMP"
 	fi
 
-	case "${_PROJECT_VAR_ARCH_TMP[$LANGUAGE]}" in
+	case "$_PROJECT_VAR_ARCH_TMP" in
 
 		"i386")
 			dialog --title "$DEFAULT_TITLE" --msgbox "\n${_I386_SUPPORT_WARN[$LANGUAGE]}" 17 75 ;;
@@ -1416,10 +1416,10 @@ _manage_config_file()
 
 _gen_kernel_version()
 {
-	_PROJECT_VAR_KVERSION_NEW=( $_PROJECT_VAR_KVERSION//"."/" "} )
+	_PROJECT_VAR_KVERSION_NEW=( ${_PROJECT_VAR_KVERSION//"."/" "} )
 
-	KERNEL_VERSION="$_PROJECT_VAR_KVERSION_NEW[0]}"
-	KERNEL_SUBVERSION="$_PROJECT_VAR_KVERSION_NEW[1]}"
+	KERNEL_VERSION="${_PROJECT_VAR_KVERSION_NEW[0]}"
+	KERNEL_SUBVERSION="${_PROJECT_VAR_KVERSION_NEW[1]}"
 
 	if [ "${_PROJECT_VAR_KVERSION_NEW[2]}" == 0 ]
 	then
@@ -1431,7 +1431,7 @@ _gen_kernel_version()
 		KERNEL_REVISION=0
 		KERNEL_VERSION_NUMBER="$KERNEL_VERSION.$KERNEL_SUBVERSION"
 	else
-		KERNEL_REVISION="$_PROJECT_VAR_KVERSION_NEW[2]}"
+		KERNEL_REVISION="${_PROJECT_VAR_KVERSION_NEW[2]}"
 		KERNEL_VERSION_NUMBER="$KERNEL_VERSION.$KERNEL_SUBVERSION.$KERNEL_REVISION"
 	fi
 }
