@@ -53,7 +53,8 @@ PRESET_CFLAGS[x86_64_6th_gen_Core]="-march=skylake -O2 -pipe"
 PRESET_CHOST[x86_64_6th_gen_Pentium]="x86_64_pc-linux-gnu"
 PRESET_CFLAGS[x86_64_6th_gen_Pentium]="-march=native"
 
-DEPENDENCIES[0]="alien axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools kernel-package libc6 libelf-dev libncurses libncurses5-dev libnotify-bin libssl-dev lzop make pkg-config qemu tar wget"
+DEPENDENCIES[0]="alien autoconf axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools kernel-package libc6 libelf-dev libncurses libncurses5-dev  libudev-dev libpci-dev libiberty-dev libnotify-bin libssl-dev lzop make openssl pkg-config qemu tar wget"
+
 DEPENDENCIES[1]="dpkg-cross gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi" # ARM
 DEPENDENCIES[2]="dpkg-cross gcc-aarch64-linux-gnu g++-aarch64-linux-gnu" 	   # ARM64
 DEPENDENCIES[3]="dpkg-cross gcc-multilib-i686-linux-gnu' gcc-aarch64-linux-gnu g++-aarch64-linux-gnu" 	   # i686
@@ -398,7 +399,6 @@ _start()
 
 	LANGUAGE=`cat $HOME/kfn/language`
 
-	_load_language
 	_dialog_scheme_files
 
 	print ok "${_SET_KFN_DIR[$LANGUAGE]} $HOME/kfn"
