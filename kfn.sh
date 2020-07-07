@@ -74,8 +74,8 @@ _EXIT_BY_ERROR[0]="Saindo pelo erro"
 _EXIT_BY_ERROR[1]="Exit by error"
 _RECOMMENDED_RAM_SIZE[0]="Recomendado: >[]= 4096 MB de RAM e pelo menos 1024 MB de Swap."
 _RECOMMENDED_RAM_SIZE[1]="recommended: >[]= 4096 MB RAM and at least 1024 MB Swap."
-_SEARCHING_FOR_DEPENDENCIES[0]="Procurando por dependencias"
-_SEARCHING_FOR_DEPENDENCIES[1]="Searching for dependencies"
+_SEARCHING_FOR_DEPENDENCIES[0]="Procurando por dependencias via dpkg"
+_SEARCHING_FOR_DEPENDENCIES[1]="Searching for dependencies via dpkg"
 _CPU_BUGS[0]="Bugs ou falhas de seguranca foram detectados no seu CPU:"
 _CPU_BUGS[1]="Bugs or security holes have been detected on your CPU."
 _SINGLE_CPU_MSG_P1[0]="CPU: Seu processador possui apenas"
@@ -273,10 +273,16 @@ _IA64_SUPPORT_WARN[0]="**NOTE** IA64 (Itanium) is not an architecture compatible
 _IA64_SUPPORT_WARN[1]="**NOTE** IA64 (Itanium) is not an architecture compatible with x86 or x86_64/AMD64 code.\n\nYou will not be able to run IA64 compiled code on an x86_64/AMD64 processor machine, or vice versa, in this case you will need an IA64 (Itanium) based processor."
 _FREE_SPACE_ERROR[0]="You only have free GB on disk in the root partition, and you need at least GB. Failure to do so will cause problems in the compilation, impossibility of installing the new kernel and may compromise the operation of the system due to lack of space. Make sure you have at least a free GB for the compilation to take place successfully."
 _FREE_SPACE_ERROR[1]="You only have free GB on disk in the root partition, and you need at least GB. Failure to do so will cause problems in the compilation, impossibility of installing the new kernel and may compromise the operation of the system due to lack of space. Make sure you have at least a free GB for the compilation to take place successfully."
+_OS_RELEASE_NOT_FOUND[0]="Nao foi possível identificar seu sistema operacional, pois, o arquivo /etc/os-release nao existe."
+_OS_RELEASE_NOT_FOUND[1]="Your operating system could not be identified because the /etc/os-release file does not exist."
 _HYPER_V_MACHINE[0]="O KFN nao pode ser executado no Windows Subsystem for Linux. Saindo."
 _HYPER_V_MACHINE[1]="KFN cannot be run on Windows Subsystem for Linux. Existing."
 _SEE_YOU_SOON[0]="Nos vemos em breve. Ate' mais."
 _SEE_YOU_SOON[1]="See you soon. Good bye."
+_COMPATIBLE_SYSTEM_FOUND[0]="Sistema compativel detectado:"
+_COMPATIBLE_SYSTEM_FOUND[1]="Compatible system detected:"
+_UNCOMPATIBLE_SYSTEM_FOUND[0]="Sistema incompativel detectado:"
+_UNCOMPATIBLE_SYSTEM_FOUND[1]="Uncompatible system detected:"
 _BUILDS[0]="           Compilacoes:"
 _BUILDS[1]="        Builds:"
 _SOURCE[0]="                 Fonte:"
@@ -353,6 +359,7 @@ title()
 	echo -e "\n\e[32;1m$TITLE $VERSION\n\e[m"
 }
 
+
 print()
 {
 	MODE="$1"
@@ -380,6 +387,52 @@ print()
 
 	echo "[$MODE] $TEXT" >> "$LOG_DIR/$KFNTIME.log"
 }
+
+_check_compatible_system()
+{
+	FILE="/etc/os-release"
+	COMPATIBLE=0
+
+	if [ ! -f "$FILE" ]
+	then
+		print error "${_OS_RELEASE_NOT_FOUND[$LANGUAGE]}"
+	fi
+
+	# Check systems
+	CHECK=`cat $FILE | grep -m 1 -i debian | wc -l`
+	if [ $CHECK == 1 ]
+	then
+		COMPATIBLE=1
+	fi
+
+	CHECK=`cat $FILE | grep -m 1 -i ubuntu | wc -l`
+	if [ $CHECK == 1 ]
+	then
+		COMPATIBLE=1
+	fi
+
+	CHECK=`cat $FILE | grep -m 1 -i mint | wc -l`
+	if [ $CHECK == 1 ]
+	then
+		COMPATIBLE=1
+	fi
+
+	NAME=`cat $FILE | grep -m 1 -i 'NAME='`
+	NAME=${NAME//'NAME="'/}
+	NAME=${NAME//'"'/}
+
+	VERSION=`cat $FILE | grep -m 1 -i 'VERSION='`
+	VERSION=${VERSION//'VERSION="'/}
+	VERSION=${VERSION//'"'/}
+
+	if [ $COMPATIBLE == 1 ]
+	then
+		print ok "${_COMPATIBLE_SYSTEM_FOUND[$LANGUAGE]} $NAME $VERSION"
+	else
+		print error "${_UNCOMPATIBLE_SYSTEM_FOUND[$LANGUAGE]} $NAME $VERSION"
+	fi
+}
+
 
 _start()
 {
@@ -694,7 +747,7 @@ _cpu_bugs()
 		CPU_BUGS=`echo $CPU_BUGS`
 		CPU_BUGS=${CPU_BUGS/"bugs : "/"Bugs: "}
 
-		print warn "\e[33;1m${_CPU_BUGS[$LANGUAGE]}\e[m\n\n		 \e[31;1m$CPU_BUGS\e[m\n		 ${_SEE[$LANGUAGE]}: 'cat /proc/cpuinfo | grep bugs' ${_CPU_BUGS_DETAILS[$LANGUAGE]}\n"
+		print warn "\e[33;1m${_CPU_BUGS[$LANGUAGE]}\e[m\n\n		 \e[31;1m$CPU_BUGS\e[m\n		 ${_SEE[$LANGUAGE]}: 'cat /proc/cpuinfo | grep bugs' ${_CPU_BUGS_DETAILS[$LANGUAGE]}"
 	fi
 	
 	}
@@ -1641,13 +1694,13 @@ _run()
 
 	#_windows_subsystem_checker
 
-	_scan_dependencies 0
+	echo
+
+	_check_compatible_system
 
 	print info "System: `uname` `uname -r` (`dpkg --print-architecture`/`getconf LONG_BIT` bits)"
 
 	_cpu_cores
-
-	_cpu_bugs
 
 	_ram_check
 
@@ -1660,6 +1713,11 @@ _run()
 	_detect_cflags
 
 	_vm_checker
+
+	_cpu_bugs
+
+	_scan_dependencies 0
+
 	echo -e "\e[32;1m\n ${_ALL_READY[$LANGUAGE]}\e[m"
 	read a
 
