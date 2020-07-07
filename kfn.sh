@@ -1692,6 +1692,8 @@ _run()
 {
 	_start
 
+	_scan_dependencies 0
+
 	#_windows_subsystem_checker
 
 	echo
@@ -1715,8 +1717,6 @@ _run()
 	_vm_checker
 
 	_cpu_bugs
-
-	_scan_dependencies 0
 
 	echo -e "\e[32;1m\n ${_ALL_READY[$LANGUAGE]}\e[m"
 	read a
