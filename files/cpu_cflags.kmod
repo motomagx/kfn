@@ -1,3 +1,5 @@
+# KFN CFLAGS file
+
 PRESET_CHOST[PowerPC64_Cell]="powerpc-unknown-linux-gnu"
 
 PRESET_CHOST[x86_64_atom]="x86_64_pc-linux-gnu"
