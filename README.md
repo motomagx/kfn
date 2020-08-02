@@ -1,5 +1,5 @@
 Kernel for Newbies é um simples assistente de customização e compilação do Kernel Linux, escrito em Shell, permitindo a compilação para multi-plataformas, suportando múltiplos compiladores (GCC e LLVM).
-
+<br>
 O Novo KFN está sendo reescrito do zero, para compatibilizar as mais recentes tecnologias e suportar as distribuições Debian-like mais recentes, como Ubuntu e Mint, e com desenvolvimento atual para compatibilizar plataformas baseadas em RedHat e OpenSUSE.
 
 O programa suporta 2 idiomas (Português e inglês) que pode ser definido durante a instalação ou promeiro uso.
@@ -11,20 +11,20 @@ O KFN suporta compilações para a arquitetura do host nativamente (qualquer arq
 
 Instalação:
 
-$ wget https://raw.githubusercontent.com/motomagx/kfn/master/kfn.sh
-$ chmod +x kfn.sh
-$ ./kfn.sh
-
-
+$ wget https://raw.githubusercontent.com/motomagx/kfn/master/kfn.sh<br>
+$ chmod +x kfn.sh<br>
+$ ./kfn.sh<br>
+<br>
+<br>
 Requerimentos:
-
+<br>
 -Sistema baseado em Debian (Ubuntu, Mint, etc) ou uma distribuição compatível, de 2018 em diante.
 -Processador de 4 núcleos ou mais é recomendado (Intel Core i3/i5/i7/i9/Xeon, AMD Ryzen 3/5/7, ARM Cortex A9+)
 -Pelo menos 20GB de espaço livre em HD (tamanho médio de uma complilação normal do Kernel, incluindo temporários)
 -2GB de RAM (recomendado: 4GB ou mais)
 -Requer conexão com a internet com acesso aos repositórios da sua distruição + acesso livre ao Kernel.org e ao Github
- 
-
+ <br>
+<br>
 Dependências: 
 
 Para que a compilação ocorra de forma perfeita, recomendamos que os seguintes pacotes sejam instalados, no entanto, o KFN pode instalar para você após a instalação: 
