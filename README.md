@@ -13,6 +13,12 @@ Instalação:
 $ wget https://raw.githubusercontent.com/motomagx/kfn/master/kfn.sh<br>
 $ chmod +x kfn.sh<br>
 $ ./kfn.sh<br>
+
+Na primeira execução, o KFN irá baixar módulos adicionais para sua execução, que podem ser localizados em <home>/kfn/modules.
+
+Para atualizar os múdulos, execute:
+$ ./kfn.sh update<br>
+
 <br>
 <br>
 Requerimentos:
