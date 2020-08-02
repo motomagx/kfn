@@ -38,6 +38,8 @@ _LLVM="Low Level Virtual Machine"
 #_QEMU_MACHINE="QEMU ${_DEFAULT_VM_MACHINE[$LANGUAGE]}"
 #_VIRTUALBOX_MACHINE="VirtualBox ${_DEFAULT_VM_MACHINE[$LANGUAGE]}"
 
+MODULES=( cpu_cflags.kmod dialog_color_scheme.kmod languages.kmod qemu.kmod main.kmod )
+
 MIN_DISK_CAPACITY_FREE=20 # Min of 20GB free in / is needed.
 DEFAULT_TITLE=" $TITLE v$VERSION (under development) "
 
@@ -164,26 +166,6 @@ _check_compatible_system()
 	fi
 }
 
-install_modules()
-{
-	COUNTER=0
-
-	# For debug only:
-	rm -r $MAIN_DIR/modules/*
-
-	while [ "x${MODULES[$COUNTER]}" != "x" ]
-	do
-	    if [ ! -f "$MAIN_DIR/modules/${MODULES[$COUNTER]}" ]
-	    then
-		print info "Instalando modulo KFN: ${MODULES[$COUNTER]}"
-		wget "$GITHUB_URL/${MODULES[$COUNTER]}" -O "$MAIN_DIR/modules/${MODULES[$COUNTER]}" --quiet 
-	    fi
-
-	    COUNTER=$(($COUNTER+1))
-
-	done    
-}
-
 _start()
 {
 	title
@@ -201,18 +183,7 @@ _start()
 		_set_language
 	fi
 
-	install_modules
-
 	echo
-
-	COUNTER=0
-
-	while [ "x${MODULES[$COUNTER]}" != "x" ]
-	do
-	    source "$MAIN_DIR/modules/${MODULES[$COUNTER]}"
-
-	    COUNTER=$(($COUNTER+1))
-	done  
 
 	LANGUAGE=`cat $MAIN_DIR/language`
 
@@ -222,8 +193,6 @@ _start()
 	print ok "${_DOWNLOADS[$LANGUAGE]} $DOWNLOAD_DIR"
 	print ok "${_SOURCE[$LANGUAGE]} $SOURCE_DIR"
 	print ok "${_BUILDS[$LANGUAGE]} $BUILD_DIR"
-
-
 }
 
 
@@ -1347,6 +1316,5 @@ _run()
 }
 
 _run
-
 
 
