@@ -1294,7 +1294,7 @@ _run()
 
 	_cpu_bugs
 
-	echo -e "\e[32;1m\n ${_ALL_READY[$LANGUAGE]}\e[m"
+	echo -e "\e[32;1m\n ${_ALL_READY[$LANGUAGE]}\e[m $TITLE"
 	read a
 
 	_main_setup new
