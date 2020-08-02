@@ -3,6 +3,15 @@
 # Kernel for Newbies
 # The KFN Team
 
+# Github: https://github.com/motomagx/
+
+# All files with the respective functions are located in kfn/modules.
+
+# You can explore these files at:
+# https://github.com/motomagx/kfn/tree/master/files
+
+# ===================================
+
 DIR="$HOME/kfn"
 GITHUB_URL="https://raw.githubusercontent.com/motomagx/kfn/master/files/"
 
