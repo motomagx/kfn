@@ -16,7 +16,7 @@ $ ./kfn.sh<br>
 
 Na primeira execução, o KFN irá baixar módulos adicionais para sua execução, que podem ser localizados em <home>/kfn/modules.
 
-Para atualizar os múdulos, execute:
+Para atualizar os múdulos, execute:<br>
 $ ./kfn.sh update<br>
 
 <br>
