@@ -10,7 +10,7 @@ FILE_FORMAT_VERSION=1
 DEFAULT_KERNEL="5.7.7"
 BASE_URL="https://cdn.kernel.org/pub/linux/kernel"
 GITHUB_URL="https://raw.githubusercontent.com/motomagx/kfn/master/files/"
-
+MAIN_DIR="$HOME/kfn"
 
 BANNED_CHARS=( ':' ';' '@' '.' '"' "'" '?' '!' '#' '$' '%' '[' ']' '{' '}' '&' '<' '>' '=' ',' '`' )
 BANNED_CHARS_PREFIX=( ${BANNED_CHARS[*]} '(' ')' )
@@ -72,7 +72,6 @@ _set_language()
 
 CROSS_CC=0
 
-MAIN_DIR="kfn"
 MicrosoftSystemID="Microsoft@Microsoft.com"
 DOWNLOAD_DIR="$MAIN_DIR/downloads"
 SOURCE_DIR="$MAIN_DIR/source"
@@ -170,14 +169,6 @@ _start()
 {
 	title
 
-	mkdir -p "$DOWNLOAD_DIR"
-	mkdir -p "$SOURCE_DIR"
-	mkdir -p "$BUILD_DIR"
-	mkdir -p "$PROJECT_DIR"
-	mkdir -p "$TEMP_DIR"
-	mkdir -p "$LOG_DIR"
-	mkdir -p "$MODULES_DIR"
-
 	if [ ! -f "$MAIN_DIR/language" ]
 	then
 		_set_language
@@ -189,17 +180,11 @@ _start()
 
 	#_dialog_scheme_files
 
-	print ok "${_SET_KFN_DIR[$LANGUAGE]} $MAIN_DIR"
-	print ok "${_DOWNLOADS[$LANGUAGE]} $DOWNLOAD_DIR"
-	print ok "${_SOURCE[$LANGUAGE]} $SOURCE_DIR"
-	print ok "${_BUILDS[$LANGUAGE]} $BUILD_DIR"
+	print info "${_SET_KFN_DIR[$LANGUAGE]} $MAIN_DIR"
+	print info "${_DOWNLOADS[$LANGUAGE]} $DOWNLOAD_DIR"
+	print info "${_SOURCE[$LANGUAGE]} $SOURCE_DIR"
+	print info "${_BUILDS[$LANGUAGE]} $BUILD_DIR"
 }
-
-
-# Dialog utility color scheme White:
-
-#DIALOG COLORS
-
 
 _disk_usage()
 {
