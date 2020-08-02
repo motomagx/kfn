@@ -46,9 +46,9 @@ KFN supports compilations for the host architecture natively (any architecture) 
 
 Installation:
 
-$ wget https://raw.githubusercontent.com/motomagx/kfn/master/kfn.sh
-$ chmod + x kfn.sh
-$ ./kfn.sh
+$ wget https://raw.githubusercontent.com/motomagx/kfn/master/kfn.sh<br>
+$ chmod + x kfn.sh<br>
+$ ./kfn.sh<br>
 
 
 Requirements:
