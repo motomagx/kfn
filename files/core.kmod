@@ -1315,6 +1315,5 @@ _run()
 	_main_setup new
 }
 
-_run
 
 
