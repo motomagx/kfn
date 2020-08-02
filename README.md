@@ -17,11 +17,11 @@ $ ./kfn.sh<br>
 <br>
 Requerimentos:
 <br>
--Sistema baseado em Debian (Ubuntu, Mint, etc) ou uma distribuição compatível, de 2018 em diante.
--Processador de 4 núcleos ou mais é recomendado (Intel Core i3/i5/i7/i9/Xeon, AMD Ryzen 3/5/7, ARM Cortex A9+)
--Pelo menos 20GB de espaço livre em HD (tamanho médio de uma complilação normal do Kernel, incluindo temporários)
--2GB de RAM (recomendado: 4GB ou mais)
--Requer conexão com a internet com acesso aos repositórios da sua distruição + acesso livre ao Kernel.org e ao Github
+-Sistema baseado em Debian (Ubuntu, Mint, etc) ou uma distribuição compatível, de 2018 em diante.<br>
+-Processador de 4 núcleos ou mais é recomendado (Intel Core i3/i5/i7/i9/Xeon, AMD Ryzen 3/5/7, ARM Cortex A9+)<br>
+-Pelo menos 20GB de espaço livre em HD (tamanho médio de uma complilação normal do Kernel, incluindo temporários)<br>
+-2GB de RAM (recomendado: 4GB ou mais)<br>
+-Requer conexão com a internet com acesso aos repositórios da sua distruição + acesso livre ao Kernel.org e ao Github<br>
  <br>
 <br>
 Dependências: 
@@ -53,11 +53,11 @@ $ ./kfn.sh<br>
 
 Requirements:
 
--System based on Debian (Ubuntu, Mint, etc.) or a compatible distribution, from 2018 onwards.
--Processor with 4 cores or more is recommended (Intel Core i3/i5/i7/i9/Xeon, AMD Ryzen 3/5/7, ARM Cortex A9 +)
--At least 20GB of free HD space (average size of a normal Kernel build, including temporary ones)
--2GB of RAM (recommended: 4GB or more)
--Requires internet connection with access to your distribution repositories + free access to Kernel.org and Github
+-System based on Debian (Ubuntu, Mint, etc.) or a compatible distribution, from 2018 onwards.<br>
+-Processor with 4 cores or more is recommended (Intel Core i3/i5/i7/i9/Xeon, AMD Ryzen 3/5/7, ARM Cortex A9 +)<br>
+-At least 20GB of free HD space (average size of a normal Kernel build, including temporary ones)<br>
+-2GB of RAM (recommended: 4GB or more)<br>
+-Requires internet connection with access to your distribution repositories + free access to Kernel.org and Github<br>
  
 
 Dependencies:
