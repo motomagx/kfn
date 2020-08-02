@@ -1,4 +1,4 @@
-KFN é um assistente de customização do Kernel Linux, escrito em Shell, permitindo a compilação para multi-plataformas, suportando múltiplos compiladores (suporte parcial no momento).
+Kernel for Newbies é um assistente de customização do Kernel Linux, escrito em Shell, permitindo a compilação para multi-plataformas, suportando múltiplos compiladores (suporte parcial no momento).
 
 O KFN "legado" iniciou em 2010, suportando edições do Kernel 2.6 até as versões mais recentes, além de ter compatibilidade testada com Linux no PlayStation 3 e computadores PowerMac.
 
