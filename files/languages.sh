@@ -1,5 +1,7 @@
 # KFN language file
 
+TITLE="Kernel for Newbies"
+
 _COMPILER[0]="Compilador"
 _COMPILER[1]="Compiler"
 _COMPILER_TXT[0]="Compiladores disponívels para"
