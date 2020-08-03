@@ -2,7 +2,7 @@ Kernel for Newbies é um simples assistente de customização e compilação do 
 <br>
 O Novo KFN está sendo reescrito do zero, para compatibilizar as mais recentes tecnologias e suportar as distribuições Debian-like mais recentes, como Ubuntu e Mint, e com desenvolvimento atual para compatibilizar plataformas baseadas em RedHat e OpenSUSE.<br>
 
-O programa suporta 2 idiomas (Português e inglês) que pode ser definido durante a instalação ou promeiro uso.<br>
+O programa suporta 2 idiomas (Português e inglês) que pode ser definido durante a instalação ou primeiro uso.<br>
 
 O KFN suporta compilações para a arquitetura do host nativamente (qualquer arquitetura) e compilação cruzada* para ARM, ARM64, PowerPC e x86_32.<br>
 
