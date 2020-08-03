@@ -32,6 +32,7 @@ mkdir -p "$DIR/logs"
 mkdir -p "$DIR/temp"
 mkdir -p "$DIR/modules"
 mkdir -p "$DIR/projects"
+mkdir -p "$DIR/downloads"
 
 MODULES=( languages.sh cpu_cflags.sh dialog_color_scheme.sh qemu.sh core.sh )
 
