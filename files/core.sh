@@ -405,7 +405,7 @@ _download()
 	if [ ! -f "$DOWNLOAD_DIR/$FILENAME" ]
 	then
 		echo
-		print error "${_ERROR_DOWNLOAD[$LANGUAGE]} $DOWNLOAD_STATUS[$LANGUAGE]}"
+		print error "${_ERROR_DOWNLOAD[$LANGUAGE]} $DOWNLOAD_STATUS"
 		print info "${_PRESS_ANY_KEY_TO_CONTINUE[$LANGUAGE]}"
 		read a
 	fi
