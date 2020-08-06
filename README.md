@@ -25,16 +25,24 @@ Requerimentos:
 <br>
 -Sistema baseado em Debian (Ubuntu, Mint, etc) ou uma distribuição compatível, de 2018 em diante.<br>
 -Processador de 4 núcleos ou mais é recomendado (Intel Core i3/i5/i7/i9/Xeon, AMD Ryzen 3/5/7, ARM Cortex A9+)<br>
--Pelo menos 20GB de espaço livre em HD (tamanho médio de uma complilação normal do Kernel, incluindo temporários)<br>
+-Pelo menos 30GB de espaço livre em HD (tamanho médio de uma complilação normal do Kernel em x86/x86_64, incluindo temporários)<br>
 -2GB de RAM (recomendado: 4GB ou mais)<br>
 -Requer conexão com a internet com acesso aos repositórios da sua distruição + acesso livre ao Kernel.org e ao Github<br>
  <br>
 <br>
 Dependências: 
 
-Para que a compilação ocorra de forma perfeita, recomendamos que os seguintes pacotes sejam instalados, no entanto, o KFN pode instalar para você após a instalação: 
+Para que a compilação ocorra de forma perfeita, recomendamos que os seguintes pacotes sejam instalados, no entanto, o KFN pode instalar para você após a instalação: <br>
 
-alien autoconf axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools kernel-package libc6 libelf-dev libncurses libncurses5-dev  libudev-dev libpci-dev libiberty-dev libnotify-bin libssl-dev lzop make openssl pkg-config qemu tar wget
+alien autoconf axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools kernel-package libc6 libelf-dev libncurses libncurses5-dev  libudev-dev libpci-dev libiberty-dev libnotify-bin libssl-dev lzop make openssl pkg-config qemu tar wget<br><br>
+
+Bugs/problemas conhecidos:<br><br>
+
+- Suporte parcial à LLVM no momento<br>
+- Algumas arquiteturas, como ARM64 e PPC64, podem não estar funcionando, no modo compilação-cruzada, em algumas distros.  <br>
+- O KFN, às vezes, acusa falha na compilação ("Saindo com o erro do status X"), quando na verdade, a compilação ocorre com sucesso.<br><br>
+
+Os problemas acima listados, e demais pequenos bugs sem gravidade estão sendo corrigidos.<br>
 
 =========================================================================
 
