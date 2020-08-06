@@ -69,7 +69,7 @@ Requirements:
 
 -System based on Debian (Ubuntu, Mint, etc.) or a compatible distribution, from 2018 onwards.<br>
 -Processor with 4 cores or more is recommended (Intel Core i3/i5/i7/i9/Xeon, AMD Ryzen 3/5/7, ARM Cortex A9 +)<br>
--At least 20GB of free HD space (average size of a normal Kernel build, including temporary ones)<br>
+-At least 40GB of free HD space (average size of a normal Kernel build, including temporary ones)<br>
 -2GB of RAM (recommended: 4GB or more)<br>
 -Requires internet connection with access to your distribution repositories + free access to Kernel.org and Github<br>
  
