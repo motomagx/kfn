@@ -5,9 +5,9 @@
 
 TITLE="Kernel for Newbies"
 MAIN_TITLE="The multi-arch kernel compiler tool"
-VERSION=3.0-alpha2+virt
+VERSION=3.0-alpha3+virt
 FILE_FORMAT_VERSION=1
-DEFAULT_KERNEL="5.7.7"
+DEFAULT_KERNEL="5.9.0"
 BASE_URL="https://cdn.kernel.org/pub/linux/kernel"
 GITHUB_URL="https://raw.githubusercontent.com/motomagx/kfn/master/files/"
 MAIN_DIR="$HOME/kfn"
@@ -17,7 +17,8 @@ BANNED_CHARS_PREFIX=( ${BANNED_CHARS[*]} '(' ')' )
 
 # CFLAGS 
 
-DEPENDENCIES[0]="alien autoconf axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools kernel-package libc6 libelf-dev libncurses libncurses5-dev  libudev-dev libpci-dev libiberty-dev libnotify-bin libssl-dev lzop make openssl pkg-config qemu tar wget"
+DEPENDENCIES[0]="alien autoconf axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools libc6 libelf-dev libncurses libncurses5-dev  libudev-dev libpci-dev libiberty-dev libnotify-bin libssl-dev lzop make openssl pkg-config qemu tar wget"
+#DEPENDENCIES[0]="alien autoconf axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools kernel-package libc6 libelf-dev libncurses libncurses5-dev  libudev-dev libpci-dev libiberty-dev libnotify-bin libssl-dev lzop make openssl pkg-config qemu tar wget"
 
 DEPENDENCIES[1]="dpkg-cross gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi" # ARM
 DEPENDENCIES[2]="dpkg-cross gcc-aarch64-linux-gnu g++-aarch64-linux-gnu" 	   # ARM64
