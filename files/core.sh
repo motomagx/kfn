@@ -17,7 +17,7 @@ BANNED_CHARS_PREFIX=( ${BANNED_CHARS[*]} '(' ')' )
 
 # CFLAGS 
 
-DEPENDENCIES[0]="alien autoconf axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools libc6 libelf-dev libncurses libncurses5-dev  libudev-dev libpci-dev libiberty-dev libnotify-bin libssl-dev lzop make openssl pkg-config qemu tar wget"
+DEPENDENCIES[0]="alien autoconf axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools libc6 libelf-dev libncurses libncurses5-dev  libiberty-dev libnotify-bin libssl-dev lzop make openssl pkg-config qemu tar wget"
 #DEPENDENCIES[0]="alien autoconf axel bash bc bison binutils-multiarch build-essential bzip2 clang curl dialog dkms fakeroot flex g++ gcc gnupg2 gzip initramfs-tools kernel-package libc6 libelf-dev libncurses libncurses5-dev  libudev-dev libpci-dev libiberty-dev libnotify-bin libssl-dev lzop make openssl pkg-config qemu tar wget"
 
 DEPENDENCIES[1]="dpkg-cross gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi" # ARM
