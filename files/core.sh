@@ -475,7 +475,7 @@ _install_dependencies()
 	echo -e "\n${_INSTALL_DEPENDENCIES[$LANGUAGE]}\n"
 
 	sudo apt-get install --no-install-recommends -y $MISSING_DEPENDENCIES
-	sudo apt-get install dialog -y # Need fix here
+	sudo apt-get install bc dialog -y
 
 	echo
 	print info "${_PRESS_ENTER_TO_CONTINUE[$LANGUAGE]}"
